@@ -1,5 +1,6 @@
-from typing import TYPE_CHECKING, Optional  # noqa
+from typing import Optional  # noqa
 
+from lndb_schema_bionty import featureset  # noqa
 from sqlmodel import Field, SQLModel
 
 
@@ -20,8 +21,7 @@ class biometa(SQLModel, table=True):  # type: ignore
     id: Optional[int] = Field(default=None, primary_key=True)
     biosample_id: int = Field(default=None, foreign_key="biosample.id")
     readout_type_id: int = Field(default=None, foreign_key="readout_type.id")
-    geneset_id: int = Field(default=None, foreign_key="geneset.id")
-    proteinset_id: int = Field(default=None, foreign_key="proteinset.id")
+    featureset_id: int = Field(default=None, foreign_key="featureset.id")
 
 
 class biosample(SQLModel, table=True):  # type: ignore
@@ -37,4 +37,4 @@ class readout_type(SQLModel, table=True):  # type: ignore
 
     id: Optional[int] = Field(default=None, primary_key=True)
     name: str = Field(index=True)
-    resolution: str = Field(default=None)
+    platform: str = Field(default=None)
