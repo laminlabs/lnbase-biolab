@@ -2,8 +2,6 @@ from typing import TYPE_CHECKING, Optional  # noqa
 
 from sqlmodel import Field, SQLModel
 
-from ._bionty import geneset, proteinset  # noqa
-
 
 class dobject_biometa(SQLModel, table=True):  # type: ignore
     """Link between dobject and meta."""
