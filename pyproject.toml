@@ -9,7 +9,7 @@ readme = "README.md"
 dynamic = ["version", "description"]
 dependencies = [
     "nbproject",
-    "sqlmodel",
+    "lndb_schema_bionty",
 ]
 
 [project.urls]
