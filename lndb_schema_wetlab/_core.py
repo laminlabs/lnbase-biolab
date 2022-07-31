@@ -1,26 +1,42 @@
-def example_function(column_name: str) -> str:
-    """Lower case your input string.
+from typing import TYPE_CHECKING, Optional  # noqa
 
-    Args:
-        column_name: Column name to transform to lower case.
+from sqlmodel import Field, SQLModel
 
-    Returns:
-        The lower-cased column name.
-    """
-    return column_name.lower()
+from ._bionty import geneset, proteinset  # noqa
 
 
-class ExampleClass:
-    """Awesome class."""
+class dobject_biometa(SQLModel, table=True):  # type: ignore
+    """Link between dobject and meta."""
 
-    def __init__(self, value: int):
-        print("initializing")
+    dobject_id: Optional[str] = Field(
+        default=None, foreign_key="dobject.id", primary_key=True
+    )
+    biometa_id: Optional[int] = Field(
+        default=None, foreign_key="biometa.id", primary_key=True
+    )
 
-    def bar(self) -> str:
-        """Bar function."""
-        return "hello"
 
-    @property
-    def foo(self) -> str:
-        """Foo property."""
-        return "hello"
+class biometa(SQLModel, table=True):  # type: ignore
+    """Metadata is a combination of biosample and experiment."""
+
+    id: Optional[int] = Field(default=None, primary_key=True)
+    biosample_id: int = Field(default=None, foreign_key="biosample.id")
+    readout_type_id: int = Field(default=None, foreign_key="readout_type.id")
+    geneset_id: int = Field(default=None, foreign_key="geneset.id")
+    proteinset_id: int = Field(default=None, foreign_key="proteinset.id")
+
+
+class biosample(SQLModel, table=True):  # type: ignore
+    """Biological samples that are registered in experiments."""
+
+    id: Optional[int] = Field(default=None, primary_key=True)
+    name: str = Field(index=True)
+    species_id: str = Field(default=None, foreign_key="species.id")
+
+
+class readout_type(SQLModel, table=True):  # type: ignore
+    """Readouts of experiments."""
+
+    id: Optional[int] = Field(default=None, primary_key=True)
+    name: str = Field(index=True)
+    resolution: str = Field(default=None)
