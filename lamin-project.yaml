@@ -1,0 +1,5 @@
+project_name: lndb-schema-wetlab
+description: Wetlab schema module
+project_slug: lndb-schema-wetlab
+repository_name: lndb-schema-wetlab
+package_name: lndb_schema_wetlab
