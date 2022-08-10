@@ -36,5 +36,8 @@ class readout_type(SQLModel, table=True):  # type: ignore
     """Readouts of experiments."""
 
     id: Optional[int] = Field(default=None, primary_key=True)
-    name: str = Field(index=True)
-    platform: str = Field(default=None)
+    efo_id: str = Field(default=None, index=True)
+    name: str = Field(default=None, index=True)
+    molecule: str = Field(default=None)
+    instrument: str = Field(default=None)
+    measurement: str = Field(default=None)
