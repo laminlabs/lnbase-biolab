@@ -1,4 +1,4 @@
-"""Schema module "wetlab" (`vvhc`).
+"""Schema module for a generic wetlab (`vvhc`).
 
 Import the package::
 
