@@ -1,7 +1,7 @@
 from datetime import datetime as datetime
 from typing import Optional  # noqa
 
-from lndb_schema_bionty import featureset  # noqa
+from lnschema_bionty import featureset  # noqa
 from sqlmodel import Field, SQLModel
 
 

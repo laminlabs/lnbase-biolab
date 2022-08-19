@@ -18,7 +18,7 @@ def build(session):
     session.run(
         "pytest",
         "-s",
-        "--cov=lndb_schema_wetlab",
+        "--cov=lnschema_wetlab",
         "--cov-append",
         "--cov-report=term-missing",
     )
