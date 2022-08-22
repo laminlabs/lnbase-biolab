@@ -1,5 +1,5 @@
 project_name: lnschema-wetlab
-description: Wetlab schema module
+description: Generic wetlab
 project_slug: lnschema-wetlab
 repository_name: lnschema-wetlab
 package_name: lnschema_wetlab

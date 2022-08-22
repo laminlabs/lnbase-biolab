@@ -1,6 +1,6 @@
 [![pypi](https://img.shields.io/pypi/v/lnschema_wetlab?color=%2334D058&label=pypi%20package)](https://pypi.org/project/lnschema_wetlab)
 
-# lnschema-wetlab: Schema module for a generic wetlab (`vvhc`)
+# lnschema-wetlab: Generic wetlab (`vvhc`)
 
 This package is in private beta at this moment!
 
