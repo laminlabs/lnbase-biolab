@@ -3,7 +3,7 @@
 <!-- prettier-ignore -->
 Name | PR | Developer | Date | Version
 --- | --- | --- | --- | ---
-✨ Added `experiment` and `experiment_type` tables. | [6](https://github.com/laminlabs/lnschema-wetlab/pull/6) | [sunnyosun](https://github.com/sunnyosun) | 2022-08-23 |
+✨ Added `experiment` and `experiment_type` tables. | [6](https://github.com/laminlabs/lnschema-wetlab/pull/6) | [sunnyosun](https://github.com/sunnyosun) | 2022-08-23 | 0.2.1
 🚚 Rename `lndb-schema-wetlab` to `lnschema-wetlab` | [5](https://github.com/laminlabs/lnschema-wetlab/pull/5) | [falexwolf](https://github.com/falexwolf) | 2022-08-19 | 0.2.0
 🔧 Add schema module id | [4](https://github.com/laminlabs/lnschema-wetlab/pull/4) | [falexwolf](https://github.com/falexwolf) | 2022-08-18 |
 🎨 Updated readout_type to use EFO | [3](https://github.com/laminlabs/lnschema-wetlab/pull/3) | [sunnyosun](https://github.com/sunnyosun) | 2022-08-10 | 0.1.2
