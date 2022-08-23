@@ -49,7 +49,7 @@ class biosample(SQLModel, table=True):  # type: ignore
 class readout_type(SQLModel, table=True):  # type: ignore
     """Readout type of experiments."""
 
-    id: Optional[str] = Field(default=None, primary_key=True)
+    id: Optional[int] = Field(default=None, primary_key=True)
     efo_id: str = Field(default=None, index=True)
     name: str = Field(default=None, index=True)
     molecule: str = Field(default=None)
