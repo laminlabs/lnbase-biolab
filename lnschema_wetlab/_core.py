@@ -42,16 +42,18 @@ class biosample(SQLModel, table=True):  # type: ignore
     """Biological samples that are registered in experiments."""
 
     id: Optional[int] = Field(default=None, primary_key=True)
-    name: str = Field(index=True)
+    name: str = Field(default=None, index=True)
+    batch: int = Field(default=None)
     species_id: int = Field(default=None, foreign_key="species.id")
+    techsample_id: int = Field(default=None, foreign_key="techsample.id")
 
 
 class readout_type(SQLModel, table=True):  # type: ignore
     """Readout type of experiments."""
 
     id: Optional[int] = Field(default=None, primary_key=True)
-    efo_id: str = Field(default=None, index=True)
-    name: str = Field(default=None, index=True)
+    efo_id: str = Field(default=None)
+    name: str = Field(default=None)
     molecule: str = Field(default=None)
     instrument: str = Field(default=None)
     measurement: str = Field(default=None)
@@ -72,3 +74,11 @@ class experiment_type(SQLModel, table=True):  # type: ignore
     id: Optional[int] = Field(default=None, primary_key=True)
     name: str = Field(default=None)
     efo_id: str = Field(default=None)
+
+
+class techsample(SQLModel, table=True):  # type: ignore
+    """Tech samples that are generated due to instrument units."""
+
+    id: Optional[int] = Field(default=None, primary_key=True)
+    name: str = Field(default=None, index=True)
+    batch: int = Field(default=None)
