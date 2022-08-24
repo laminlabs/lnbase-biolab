@@ -17,7 +17,7 @@ This is the complete API reference:
 """
 # This is lnschema-module vvhc.
 _schema_module_id = "vvhc"
-__version__ = "0.2.2"
+__version__ = "0.2.3"
 
 from ._core import (  # noqa
     biometa,

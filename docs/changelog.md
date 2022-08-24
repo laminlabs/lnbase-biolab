@@ -3,7 +3,7 @@
 <!-- prettier-ignore -->
 Name | PR | Developer | Date | Version
 --- | --- | --- | --- | ---
-✨ Added `techsample` table | [8](https://github.com/laminlabs/lnschema-wetlab/pull/8) | [sunnyosun](https://github.com/sunnyosun) | 2022-08-24 |
+✨ Added `techsample` table | [8](https://github.com/laminlabs/lnschema-wetlab/pull/8) | [sunnyosun](https://github.com/sunnyosun) | 2022-08-24 | 0.2.3
 ✏️ Fixed id type to int | [7](https://github.com/laminlabs/lnschema-wetlab/pull/7) | [sunnyosun](https://github.com/sunnyosun) | 2022-08-23 | 0.2.2
 ✨ Added `experiment` and `experiment_type` tables. | [6](https://github.com/laminlabs/lnschema-wetlab/pull/6) | [sunnyosun](https://github.com/sunnyosun) | 2022-08-23 | 0.2.1
 🚚 Rename `lndb-schema-wetlab` to `lnschema-wetlab` | [5](https://github.com/laminlabs/lnschema-wetlab/pull/5) | [falexwolf](https://github.com/falexwolf) | 2022-08-19 | 0.2.0
