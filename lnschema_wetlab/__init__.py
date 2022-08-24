@@ -11,6 +11,9 @@ This is the complete API reference:
 
    biometa
    biosample
+   techsample
+   experiment
+   experiment_type
    dobject_biometa
    readout_type
    version_vvhc
@@ -23,6 +26,9 @@ from ._core import (  # noqa
     biometa,
     biosample,
     dobject_biometa,
+    experiment,
+    experiment_type,
     readout_type,
+    techsample,
     version_vvhc,
 )
