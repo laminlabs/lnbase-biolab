@@ -3,6 +3,7 @@
 <!-- prettier-ignore -->
 Name | PR | Developer | Date | Version
 --- | --- | --- | --- | ---
+🎨 Default bio and tech samples | [10](https://github.com/laminlabs/lnschema-wetlab/pull/10) | [sunnyosun](https://github.com/sunnyosun) | 2022-08-25 |
 🐛 Imported additional tables | [9](https://github.com/laminlabs/lnschema-wetlab/pull/9) | [sunnyosun](https://github.com/sunnyosun) | 2022-08-24 | 0.2.4
 ✨ Added `techsample` table | [8](https://github.com/laminlabs/lnschema-wetlab/pull/8) | [sunnyosun](https://github.com/sunnyosun) | 2022-08-24 | 0.2.3
 ✏️ Fixed id type to int | [7](https://github.com/laminlabs/lnschema-wetlab/pull/7) | [sunnyosun](https://github.com/sunnyosun) | 2022-08-23 | 0.2.2
