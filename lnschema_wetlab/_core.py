@@ -38,33 +38,23 @@ class biometa(SQLModel, table=True):  # type: ignore
     experiment_id: int = Field(default=None, foreign_key="experiment.id")
 
 
-class biosample(SQLModel, table=True):  # type: ignore
-    """Biological samples that are registered in experiments."""
-
-    id: Optional[int] = Field(default=None, primary_key=True)
-    name: str = Field(default=None, index=True)
-    batch: int = Field(default=None)
-    species_id: int = Field(default=None, foreign_key="species.id")
-    techsample_id: int = Field(default=None, foreign_key="techsample.id")
-
-
 class readout_type(SQLModel, table=True):  # type: ignore
     """Readout type of experiments."""
 
     id: Optional[int] = Field(default=None, primary_key=True)
-    efo_id: str = Field(default=None)
-    name: str = Field(default=None)
-    molecule: str = Field(default=None)
-    instrument: str = Field(default=None)
-    measurement: str = Field(default=None)
+    efo_id: Optional[str] = None
+    name: Optional[str] = None
+    molecule: Optional[str] = None
+    instrument: Optional[str] = None
+    measurement: Optional[str] = None
 
 
 class experiment(SQLModel, table=True):  # type: ignore
     """Experiments."""
 
     id: Optional[int] = Field(default=None, primary_key=True)
-    name: str = Field(default=None)
-    project: str = Field(default=None)
+    name: Optional[str] = None
+    project: Optional[str] = None
     experiment_type_id: int = Field(default=None, foreign_key="experiment_type.id")
 
 
@@ -72,8 +62,18 @@ class experiment_type(SQLModel, table=True):  # type: ignore
     """Experiment types."""
 
     id: Optional[int] = Field(default=None, primary_key=True)
-    name: str = Field(default=None)
-    efo_id: str = Field(default=None)
+    name: Optional[str] = None
+    efo_id: Optional[str] = None
+
+
+class biosample(SQLModel, table=True):  # type: ignore
+    """Biological samples that are registered in experiments."""
+
+    id: Optional[int] = Field(default=None, primary_key=True)
+    name: str = Field(default=None, index=True)
+    batch: Optional[int] = None
+    species_id: int = Field(default=None, foreign_key="species.id")
+    techsample_id: int = Field(default=None, foreign_key="techsample.id")
 
 
 class techsample(SQLModel, table=True):  # type: ignore
@@ -81,4 +81,4 @@ class techsample(SQLModel, table=True):  # type: ignore
 
     id: Optional[int] = Field(default=None, primary_key=True)
     name: str = Field(default=None, index=True)
-    batch: int = Field(default=None)
+    batch: Optional[int] = None
