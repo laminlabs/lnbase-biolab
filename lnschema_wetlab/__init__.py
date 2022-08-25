@@ -20,7 +20,7 @@ This is the complete API reference:
 """
 # This is lnschema-module vvhc.
 _schema_module_id = "vvhc"
-__version__ = "0.2.4"
+__version__ = "0.3.0"
 _tables = ["biosample", "techsample"]
 
 from ._core import (  # noqa
