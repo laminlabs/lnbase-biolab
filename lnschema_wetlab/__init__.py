@@ -15,7 +15,7 @@ This is the complete API reference:
    experiment
    experiment_type
    dobject_biometa
-   readout_type
+   readout
    version_vvhc
 """
 # This is lnschema-module vvhc.
@@ -28,7 +28,7 @@ from ._core import (  # noqa
     dobject_biometa,
     experiment,
     experiment_type,
-    readout_type,
+    readout,
     version_vvhc,
 )
 
@@ -44,5 +44,5 @@ if "techsample" in _tables:
 # if "experiment_type" in _tables:
 #    from ._experiment_type import experiment_type
 
-# if "readout_type" in _tables:
-#    from ._readout_type import readout_type
+# if "readout" in _tables:
+#    from ._readout import readout
