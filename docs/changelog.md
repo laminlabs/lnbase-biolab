@@ -3,6 +3,7 @@
 <!-- prettier-ignore -->
 Name | PR | Developer | Date | Version
 --- | --- | --- | --- | ---
+🚚 Rename `readout_type` to `readout`, add descriptions | [12](https://github.com/laminlabs/lnschema-wetlab/pull/12) | [sunnyosun](https://github.com/sunnyosun) | 2022-08-26 |
 🏗️ Make table load configurable | [11](https://github.com/laminlabs/lnschema-wetlab/pull/11) | [falexwolf](https://github.com/falexwolf) | 2022-08-25 | 0.3.0
 🎨 Default bio and tech samples | [10](https://github.com/laminlabs/lnschema-wetlab/pull/10) | [sunnyosun](https://github.com/sunnyosun) | 2022-08-25 |
 🐛 Imported additional tables | [9](https://github.com/laminlabs/lnschema-wetlab/pull/9) | [sunnyosun](https://github.com/sunnyosun) | 2022-08-24 | 0.2.4
