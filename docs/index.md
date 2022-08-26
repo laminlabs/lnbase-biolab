@@ -23,6 +23,18 @@ The order of this tuple is inspired by the workflow:
 - Choose one or several `readout`
 - Determine a set of features that will be measured
 
+Install:
+
+```
+pip install lnschema-wetlab
+```
+
+Get started:
+
+- [Tutorials](https://lamin.ai/docs/db/tutorials/index) walk you through setup and usage of the LaminDB with this schema.
+- Browse the [API reference](api) to check out schema tables.
+- [Reach out](https://lamin.ai/contact) to learn about modules that connect your assays, pipelines, instruments & workflows within our data platform enterprise offer.
+
 ```{toctree}
 :maxdepth: 1
 
