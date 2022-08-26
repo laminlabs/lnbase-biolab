@@ -3,23 +3,27 @@
 :end-line: 3
 ```
 
-`lnschema-wetlab` is a highly flexible and extendable wetlab schema to track data generation in wet labs.
+`lnschema-wetlab` is an extendable wetlab schema to track data generation in wet labs.
 
-Any data (`dobject`) generated in an experiment should be **simply queryable** and, hence, **directly** linked to the following entities present in `biometa`:
+Design choices:
 
-- `experiment`: an experiement performed to produce the data of interest
-- `biosample`: biological samples that the data is generated from
-  - `techsample` may be used to extend the biosample in specific experiments that requires pooling or spliting of biosamples
-- `readout`: types of measurements collected in the data
-- `featureset`: sets of features that data contains
+Datasets generated in an experiment (`dobject`) are linked to `biometa`, which stores all information about experimental and scientific entities.
+In particular:
 
-These entities allow mapping arbitrarily complex experimental designs (like many other schema choices would).
+- `experiment`: An experiement performed to generate data.
+- `biosample`: The biological samples from which data are generated.
+- `readout`: The measurements types applied to the biosamples.
+- `featureset`: The sets of features that are contained in the data.
+
+These entities allow mapping arbitrarily complex experimental designs.
+While other schema designs are possible, the present one enables simple queries through directly linking `biometa` against the 4-tuple.
 
 The order of this tuple is inspired by the workflow:
 
 - Plan an `experiment` based on an `experiment_design`:
   - `experiment_design`: metadata that describes experiments to perform
 - Prepare a `biosample` containing all metadata including `tissue`, `species`, `patient`, `perturbagen`, `time`, `dose`, `mutation`, etc.
+  - `techsample` A biosample extension for specific experiments that require pooling or splitting biosamples.
 - Choose one or several `readout`
 - Determine a set of features that will be measured
 
