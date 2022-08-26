@@ -33,13 +33,13 @@ class biometa(SQLModel, table=True):  # type: ignore
 
     id: Optional[int] = Field(default=None, primary_key=True)
     biosample_id: int = Field(default=None, foreign_key="biosample.id")
-    readout_type_id: int = Field(default=None, foreign_key="readout_type.id")
+    readout_id: int = Field(default=None, foreign_key="readout.id")
     featureset_id: int = Field(default=None, foreign_key="featureset.id")
     experiment_id: int = Field(default=None, foreign_key="experiment.id")
 
 
-class readout_type(SQLModel, table=True):  # type: ignore
-    """Readout type of experiments."""
+class readout(SQLModel, table=True):  # type: ignore
+    """Readout of experiments."""
 
     id: Optional[int] = Field(default=None, primary_key=True)
     efo_id: Optional[str] = None
