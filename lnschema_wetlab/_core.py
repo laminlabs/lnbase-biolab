@@ -55,6 +55,7 @@ class experiment(SQLModel, table=True):  # type: ignore
     exp_id: Optional[str] = None
     name: Optional[str] = None
     project: Optional[str] = None
+    time_created: datetime = Field(default_factory=utcnow, nullable=False)
     experiment_type_id: int = Field(default=None, foreign_key="experiment_type.id")
 
 
