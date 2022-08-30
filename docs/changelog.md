@@ -3,6 +3,7 @@
 <!-- prettier-ignore -->
 Name | PR | Developer | Date | Version
 --- | --- | --- | --- | ---
+🚚 Rename `project` to `project_id` in the experiment table | [15](https://github.com/laminlabs/lnschema-wetlab/pull/15) | [sunnyosun](https://github.com/sunnyosun) | 2022-08-30 |
 🎨 Restrict `efo_id` to be unique | [14](https://github.com/laminlabs/lnschema-wetlab/pull/14) | [sunnyosun](https://github.com/sunnyosun) | 2022-08-30 | 0.3.3
 🎨 Updated biosample table to include more columns | [13](https://github.com/laminlabs/lnschema-wetlab/pull/13) | [sunnyosun](https://github.com/sunnyosun) | 2022-08-28 | 0.3.2
 🚚 Rename `readout_type` to `readout`, add descriptions | [12](https://github.com/laminlabs/lnschema-wetlab/pull/12) | [sunnyosun](https://github.com/sunnyosun) | 2022-08-26 | 0.3.1
