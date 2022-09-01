@@ -3,7 +3,7 @@
 <!-- prettier-ignore -->
 Name | PR | Developer | Date | Version
 --- | --- | --- | --- | ---
-🐛 fixed the foreign key types | [16](https://github.com/laminlabs/lnschema-wetlab/pull/16) | [sunnyosun](https://github.com/sunnyosun) | 2022-09-01 |
+🐛 fixed the foreign key types | [16](https://github.com/laminlabs/lnschema-wetlab/pull/16) | [sunnyosun](https://github.com/sunnyosun) | 2022-09-01 | 0.3.5
 🚚 Rename `project` to `project_id` in the experiment table | [15](https://github.com/laminlabs/lnschema-wetlab/pull/15) | [sunnyosun](https://github.com/sunnyosun) | 2022-08-30 | 0.3.4
 🎨 Restrict `efo_id` to be unique | [14](https://github.com/laminlabs/lnschema-wetlab/pull/14) | [sunnyosun](https://github.com/sunnyosun) | 2022-08-30 | 0.3.3
 🎨 Updated biosample table to include more columns | [13](https://github.com/laminlabs/lnschema-wetlab/pull/13) | [sunnyosun](https://github.com/sunnyosun) | 2022-08-28 | 0.3.2
