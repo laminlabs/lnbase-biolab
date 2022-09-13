@@ -12,7 +12,7 @@ class biosample(SQLModel, table=True):  # type: ignore
     """Biological samples that are registered in experiments."""
 
     id: Optional[int] = Field(default=None, primary_key=True)
-    external_id: str = Field(default=None, index=True)
+    external_id: str = Field(default=None, index=True, unique=True)
     name: str = Field(default=None, index=True)
     batch: Optional[str] = None
     species_id: int = Field(default=None, foreign_key="species.id")
