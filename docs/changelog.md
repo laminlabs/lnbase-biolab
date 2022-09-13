@@ -3,7 +3,7 @@
 <!-- prettier-ignore -->
 Name | PR | Developer | Date | Version
 --- | --- | --- | --- | ---
-✨ Added filepath to techsample | [19](https://github.com/laminlabs/lnschema-wetlab/pull/19) | [sunnyosun](https://github.com/sunnyosun) | 2022-09-13 |
+✨ Added filepath to techsample | [19](https://github.com/laminlabs/lnschema-wetlab/pull/19) | [sunnyosun](https://github.com/sunnyosun) | 2022-09-13 | 0.3.7
 🎨 Added `external_id` | [17](https://github.com/laminlabs/lnschema-wetlab/pull/17) | [sunnyosun](https://github.com/sunnyosun) | 2022-09-06 | 0.3.6
 🐛 fixed the foreign key types | [16](https://github.com/laminlabs/lnschema-wetlab/pull/16) | [sunnyosun](https://github.com/sunnyosun) | 2022-09-01 | 0.3.5
 🚚 Rename `project` to `project_id` in the experiment table | [15](https://github.com/laminlabs/lnschema-wetlab/pull/15) | [sunnyosun](https://github.com/sunnyosun) | 2022-08-30 | 0.3.4
