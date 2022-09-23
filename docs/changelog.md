@@ -3,6 +3,7 @@
 <!-- prettier-ignore -->
 Name | PR | Developer | Date | Version
 --- | --- | --- | --- | ---
+🎨 Update all primary keys to base62 and overhaul bio & techsample tables | [21](https://github.com/laminlabs/lnschema-wetlab/pull/21) | [falexwolf](https://github.com/falexwolf) | 2022-09-23 |
 🍱 Add migrations infra | [20](https://github.com/laminlabs/lnschema-wetlab/pull/20) | [falexwolf](https://github.com/falexwolf) | 2022-09-23 |
 ✨ Added filepath to techsample | [19](https://github.com/laminlabs/lnschema-wetlab/pull/19) | [sunnyosun](https://github.com/sunnyosun) | 2022-09-13 | 0.3.7
 🎨 Added `external_id` | [17](https://github.com/laminlabs/lnschema-wetlab/pull/17) | [sunnyosun](https://github.com/sunnyosun) | 2022-09-06 | 0.3.6
