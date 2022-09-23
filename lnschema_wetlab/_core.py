@@ -1,19 +1,8 @@
 from datetime import datetime as datetime
 from typing import Optional  # noqa
 
+from lnschema_core._timestamps import CreatedAt
 from sqlmodel import Field, SQLModel
-
-
-def utcnow():
-    return datetime.utcnow().replace(microsecond=0)
-
-
-class version_vvhc(SQLModel, table=True):  # type: ignore
-    """Schema module version."""
-
-    v: Optional[str] = Field(primary_key=True)
-    user_id: str = Field(foreign_key="user.id")
-    time_created: datetime = Field(default_factory=utcnow, nullable=False)
 
 
 class dobject_biometa(SQLModel, table=True):  # type: ignore
@@ -35,6 +24,7 @@ class biometa(SQLModel, table=True):  # type: ignore
     biosample_id: int = Field(default=None, foreign_key="biosample.id")
     readout_id: int = Field(default=None, foreign_key="readout.id")
     featureset_id: int = Field(default=None, foreign_key="featureset.id")
+    created_at: datetime = CreatedAt
 
 
 class readout(SQLModel, table=True):  # type: ignore
@@ -46,6 +36,7 @@ class readout(SQLModel, table=True):  # type: ignore
     molecule: Optional[str] = None
     instrument: Optional[str] = None
     measurement: Optional[str] = None
+    created_at: datetime = CreatedAt
 
 
 class experiment(SQLModel, table=True):  # type: ignore
@@ -57,7 +48,7 @@ class experiment(SQLModel, table=True):  # type: ignore
     date: Optional[str] = None
     project_id: int = Field(default=None, foreign_key="project.id")
     experiment_type_id: int = Field(default=None, foreign_key="experiment_type.id")
-    time_created: datetime = Field(default_factory=utcnow, nullable=False)
+    created_at: datetime = CreatedAt
 
 
 class experiment_type(SQLModel, table=True):  # type: ignore
@@ -66,6 +57,7 @@ class experiment_type(SQLModel, table=True):  # type: ignore
     id: Optional[int] = Field(default=None, primary_key=True)
     name: Optional[str] = None
     efo_id: str = Field(default=None, unique=True)
+    created_at: datetime = CreatedAt
 
 
 class project(SQLModel, table=True):  # type: ignore
@@ -74,3 +66,27 @@ class project(SQLModel, table=True):  # type: ignore
     id: Optional[int] = Field(default=None, primary_key=True)
     external_id: str = Field(default=None, unique=True)
     name: Optional[str] = None
+    created_at: datetime = CreatedAt
+
+
+class version_vvhc(SQLModel, table=True):  # type: ignore
+    """Wetlab schema module versions deployed in a given instance.
+
+    Migrations of the schema module add rows to this table, storing the schema
+    module version to which we migrated along with the user who performed the
+    migration.
+    """
+
+    v: Optional[str] = Field(primary_key=True)
+    migration: Optional[str] = None
+    user_id: str = Field(foreign_key="user.id")
+    created_at: Optional[datetime] = CreatedAt
+
+
+class migration_vvhc(SQLModel, table=True):  # type: ignore
+    """Latest migration.
+
+    This stores the reference to the latest migration script deployed.
+    """
+
+    version_num: Optional[str] = Field(primary_key=True)

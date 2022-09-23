@@ -20,7 +20,8 @@ This is the complete API reference:
    version_vvhc
 """
 # This is lnschema-module vvhc.
-_schema_module_id = "vvhc"
+_schema = "vvhc"
+_migration = None
 __version__ = "0.3.7"
 _tables = ["biosample", "techsample"]
 
