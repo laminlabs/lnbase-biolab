@@ -38,6 +38,7 @@ from ._core import (  # noqa
     dobject_biometa,
     experiment,
     experiment_type,
+    migration_vvhc,
     project,
     readout,
     version_vvhc,
