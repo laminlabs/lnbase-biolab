@@ -24,7 +24,7 @@ Tracking versions & migrations:
    :toctree: .
 
    version_vvhc
-   migration_vhhc
+   migration_vvhc
 
 """
 # This is lnschema-module vvhc.
