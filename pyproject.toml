@@ -9,7 +9,8 @@ readme = "README.md"
 dynamic = ["version", "description"]
 dependencies = [
     "nbproject",
-    "sqlmodel>=0.0.7",
+    "sqlmodel>=0.0.8",
+    "lnschema_core",
 ]
 
 [project.urls]
