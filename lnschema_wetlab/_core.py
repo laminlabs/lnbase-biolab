@@ -21,7 +21,7 @@ class biometa(SQLModel, table=True):  # type: ignore
 
     id: Optional[int] = Field(default=None, primary_key=True)
     experiment_id: int = Field(default=None, foreign_key="experiment.id")
-    biosample_id: int = Field(default=None, foreign_key="biosample.id")
+    biosample_id: str = Field(default=None, foreign_key="biosample.id")
     readout_id: int = Field(default=None, foreign_key="readout.id")
     featureset_id: int = Field(default=None, foreign_key="featureset.id")
     created_at: datetime = CreatedAt
