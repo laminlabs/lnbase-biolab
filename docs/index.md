@@ -35,14 +35,14 @@ pip install lnschema-wetlab
 
 Get started:
 
-- [Tutorials](https://lamin.ai/docs/db/tutorials/index) walk you through setup and usage of the LaminDB with this schema.
-- Browse the [API reference](api) to check out schema tables.
-- [Reach out](https://lamin.ai/contact) to learn about modules that connect your assays, pipelines, instruments & workflows within our data platform enterprise offer.
+- The LaminDB [guide](https://lamin.ai/docs/db/guide) explains usage of this schema.
+- Browse the [API reference](api) to learn about the tables within this schema.
 
 ```{toctree}
 :maxdepth: 1
+:hidden:
 
 api
-guides/index
+guide/index
 changelog
 ```
