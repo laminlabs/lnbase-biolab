@@ -17,7 +17,15 @@ This is the complete API reference:
    experiment_type
    dobject_biometa
    readout
+
+Tracking versions & migrations:
+
+.. autosummary::
+   :toctree: .
+
    version_vvhc
+   migration_vhhc
+
 """
 # This is lnschema-module vvhc.
 _schema = "vvhc"

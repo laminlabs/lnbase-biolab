@@ -39,3 +39,8 @@ def experiment() -> str:
 def experiment_type() -> str:
     """Experiments: 12 base62."""
     return lnschema_core.id.base62(n_char=12)
+
+
+def project() -> str:
+    """Projects: 16 base62."""
+    return lnschema_core.id.base62(n_char=16)

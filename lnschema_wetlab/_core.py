@@ -40,9 +40,7 @@ class readout(SQLModel, table=True):  # type: ignore
 class experiment(SQLModel, table=True):  # type: ignore
     """Experiments."""
 
-    id: Optional[str] = Field(
-        default_factory=idg.experiment, default=None, primary_key=True
-    )
+    id: Optional[str] = Field(default_factory=idg.experiment, primary_key=True)
     external_id: str = Field(default=None, unique=True)
     name: Optional[str] = Field(default=None, index=True)
     date: datetime = Field(default=None, index=True)
@@ -56,9 +54,7 @@ class experiment(SQLModel, table=True):  # type: ignore
 class experiment_type(SQLModel, table=True):  # type: ignore
     """Experiment types."""
 
-    id: Optional[str] = Field(
-        default_factory=idg.experiment, default=None, primary_key=True
-    )
+    id: Optional[str] = Field(default_factory=idg.experiment, primary_key=True)
     name: Optional[str] = None
     efo_id: str = Field(default=None, unique=True)
     created_at: datetime = CreatedAt
@@ -67,7 +63,7 @@ class experiment_type(SQLModel, table=True):  # type: ignore
 class project(SQLModel, table=True):  # type: ignore
     """Project."""
 
-    id: Optional[str] = Field(default=None, primary_key=True)
+    id: Optional[str] = Field(default_factory=idg.project, primary_key=True)
     external_id: str = Field(default=None, unique=True, index=True)
     name: Optional[str] = Field(default=None, index=True)
     created_at: datetime = CreatedAt
