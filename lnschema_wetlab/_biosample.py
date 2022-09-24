@@ -31,4 +31,4 @@ class biosample(SQLModel, table=True):  # type: ignore
         default=None, foreign_key="techsample.id", index=True
     )
     created_at: datetime = CreatedAt
-    updated_at: datetime = UpdatedAt
+    updated_at: Optional[datetime] = UpdatedAt
