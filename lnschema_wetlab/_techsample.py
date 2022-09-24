@@ -17,4 +17,4 @@ class techsample(SQLModel, table=True):  # type: ignore
     filepath_r1: Optional[str] = None
     filepath_r2: Optional[str] = None
     created_at: datetime = CreatedAt
-    updated_at: datetime = UpdatedAt
+    updated_at: Optional[datetime] = UpdatedAt
