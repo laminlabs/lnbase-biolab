@@ -30,7 +30,7 @@ Tracking versions & migrations:
 # This is lnschema-module vvhc.
 _schema = "vvhc"
 _migration = None
-__version__ = "0.3.7"
+__version__ = "0.4.0"
 _tables = ["biosample", "techsample"]
 
 from ._core import (  # noqa
