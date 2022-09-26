@@ -10,7 +10,7 @@ from . import id as idg
 class techsample(SQLModel, table=True):  # type: ignore
     """Tech samples that are generated due to instrument units."""
 
-    id: Optional[str] = Field(default_factory=idg.techsample, primary_key=True)
+    id: str = Field(default_factory=idg.techsample, primary_key=True)
     external_id: Optional[str] = Field(default=None, index=True, unique=True)
     name: Optional[str] = Field(default=None, index=True)
     batch: Optional[str] = None
