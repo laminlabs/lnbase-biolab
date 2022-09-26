@@ -2,22 +2,37 @@ from datetime import datetime as datetime
 from typing import Optional  # noqa
 
 from lnschema_core._timestamps import CreatedAt
-from sqlmodel import Field, SQLModel
+from sqlmodel import Field, ForeignKeyConstraint, SQLModel
 
 from . import id as idg
 
 
+# fmt: off
 class dobject_biometa(SQLModel, table=True):  # type: ignore
-    """Link between dobject and meta."""
-
-    dobject_id: Optional[str] = Field(foreign_key="dobject.id", primary_key=True)
-    biometa_id: Optional[str] = Field(foreign_key="biometa.id", primary_key=True)
+    """Link between :class:`~lnschema_wetlab.biometa` and `lnschema_core.dobject <https://lamin.ai/docs/lnschema-core/lnschema_core.dobject>`__."""  # noqa
+# fmt: on
+    __table_args__ = (
+        ForeignKeyConstraint(
+            ["dobject_id", "dobject_v"],
+            ["dobject.id", "dobject.v"],
+            name="dobject_biometa_dobject",
+        ),
+    )
+    dobject_id: str = Field(primary_key=True)
+    """Link to `lnschema_core.dobject
+    <https://lamin.ai/docs/lnschema-core/lnschema_core.dobject>`__.
+    """
+    dobject_v: str = Field(primary_key=True)
+    """Link to `lnschema_core.dobject
+    <https://lamin.ai/docs/lnschema-core/lnschema_core.dobject>`__.
+    """
+    biometa_id: str = Field(foreign_key="biometa.id", primary_key=True)
 
 
 class biometa(SQLModel, table=True):  # type: ignore
     """Metadata is a combination of biosample and experiment."""
 
-    id: Optional[str] = Field(default_factory=idg.biometa, primary_key=True)
+    id: str = Field(default_factory=idg.biometa, primary_key=True)
     experiment_id: int = Field(default=None, foreign_key="experiment.id", index=True)
     biosample_id: str = Field(default=None, foreign_key="biosample.id", index=True)
     readout_id: int = Field(default=None, foreign_key="readout.id", index=True)
@@ -28,7 +43,7 @@ class biometa(SQLModel, table=True):  # type: ignore
 class readout(SQLModel, table=True):  # type: ignore
     """Readout of experiments."""
 
-    id: Optional[str] = Field(default_factory=idg.readout, primary_key=True)
+    id: str = Field(default_factory=idg.readout, primary_key=True)
     efo_id: str = Field(default=None, unique=True, index=True)
     name: Optional[str] = None
     molecule: Optional[str] = None
@@ -40,7 +55,7 @@ class readout(SQLModel, table=True):  # type: ignore
 class experiment(SQLModel, table=True):  # type: ignore
     """Experiments."""
 
-    id: Optional[str] = Field(default_factory=idg.experiment, primary_key=True)
+    id: str = Field(default_factory=idg.experiment, primary_key=True)
     external_id: str = Field(default=None, unique=True)
     name: Optional[str] = Field(default=None, index=True)
     date: datetime = Field(default=None, index=True)
@@ -54,7 +69,7 @@ class experiment(SQLModel, table=True):  # type: ignore
 class experiment_type(SQLModel, table=True):  # type: ignore
     """Experiment types."""
 
-    id: Optional[str] = Field(default_factory=idg.experiment, primary_key=True)
+    id: str = Field(default_factory=idg.experiment, primary_key=True)
     name: Optional[str] = None
     efo_id: str = Field(default=None, unique=True)
     created_at: datetime = CreatedAt
@@ -63,7 +78,7 @@ class experiment_type(SQLModel, table=True):  # type: ignore
 class project(SQLModel, table=True):  # type: ignore
     """Project."""
 
-    id: Optional[str] = Field(default_factory=idg.project, primary_key=True)
+    id: str = Field(default_factory=idg.project, primary_key=True)
     external_id: str = Field(default=None, unique=True, index=True)
     name: Optional[str] = Field(default=None, index=True)
     created_at: datetime = CreatedAt
@@ -77,10 +92,10 @@ class version_vvhc(SQLModel, table=True):  # type: ignore
     migration.
     """
 
-    v: Optional[str] = Field(primary_key=True)
+    v: str = Field(primary_key=True)
     migration: Optional[str] = None
     user_id: str = Field(foreign_key="user.id")
-    created_at: Optional[datetime] = CreatedAt
+    created_at: datetime = CreatedAt
 
 
 class migration_vvhc(SQLModel, table=True):  # type: ignore
