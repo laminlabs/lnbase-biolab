@@ -3,6 +3,7 @@
 <!-- prettier-ignore -->
 Name | PR | Developer | Date | Version
 --- | --- | --- | --- | ---
+🍱 Added treatment, removed techsample_id in biosample | [25](https://github.com/laminlabs/lnschema-wetlab/pull/25) | [sunnyosun](https://github.com/sunnyosun) | 2022-09-28 |
 🎨 Added biosample_techsample, changed imports to default | [24](https://github.com/laminlabs/lnschema-wetlab/pull/24) | [sunnyosun](https://github.com/sunnyosun) | 2022-09-28 | 0.4.1
 🎨 Fix type annotations and link table | [23](https://github.com/laminlabs/lnschema-wetlab/pull/23) | [falexwolf](https://github.com/falexwolf) | 2022-09-26 | 0.4.0
 🐛 Fix type annotation of timestamps | [22](https://github.com/laminlabs/lnschema-wetlab/pull/22) | [falexwolf](https://github.com/falexwolf) | 2022-09-24 |
