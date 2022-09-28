@@ -27,8 +27,8 @@ class biosample(SQLModel, table=True):  # type: ignore
     cell_marker_id: Optional[str] = Field(
         default=None, foreign_key="cell_marker.id", index=True
     )
-    techsample_id: Optional[str] = Field(
-        default=None, foreign_key="techsample.id", index=True
+    treatment_id: Optional[str] = Field(
+        default=None, foreign_key="treatment.id", index=True
     )
     created_at: datetime = CreatedAt
     updated_at: Optional[datetime] = UpdatedAt

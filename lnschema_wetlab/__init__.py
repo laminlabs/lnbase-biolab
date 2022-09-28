@@ -43,6 +43,7 @@ from ._core import (  # noqa
     migration_vvhc,
     project,
     readout,
+    treatment,
     version_vvhc,
 )
 from ._techsample import biosample_techsample, techsample
