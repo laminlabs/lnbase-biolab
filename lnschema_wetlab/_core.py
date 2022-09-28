@@ -84,6 +84,15 @@ class project(SQLModel, table=True):  # type: ignore
     created_at: datetime = CreatedAt
 
 
+class treatment(SQLModel, table=True):  # type: ignore
+    """Treatment."""
+
+    id: str = Field(default_factory=idg.treatment, primary_key=True)
+    external_id: str = Field(default=None, unique=True, index=True)
+    name: Optional[str] = Field(default=None, index=True)
+    created_at: datetime = CreatedAt
+
+
 class version_vvhc(SQLModel, table=True):  # type: ignore
     """Wetlab schema module versions deployed in a given instance.
 
