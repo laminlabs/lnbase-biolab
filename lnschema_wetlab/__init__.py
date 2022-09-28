@@ -12,6 +12,7 @@ This is the complete API reference:
    biometa
    biosample
    techsample
+   biosample_techsample
    project
    experiment
    experiment_type
@@ -31,8 +32,9 @@ Tracking versions & migrations:
 _schema = "vvhc"
 _migration = None
 __version__ = "0.4.0"
-_tables = ["biosample", "techsample"]
+# _tables = ["biosample", "techsample"]
 
+from ._biosample import biosample
 from ._core import (  # noqa
     biometa,
     dobject_biometa,
@@ -43,12 +45,13 @@ from ._core import (  # noqa
     readout,
     version_vvhc,
 )
+from ._techsample import biosample_techsample, techsample
 
-if "biosample" in _tables:
-    from ._biosample import biosample
+# if "biosample" in _tables:
+#     from ._biosample import biosample
 
-if "techsample" in _tables:
-    from ._techsample import techsample
+# if "techsample" in _tables:
+#     from ._techsample import techsample
 
 # if "experiment" in _tables:
 #    from ._experiment import experiment
