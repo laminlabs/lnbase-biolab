@@ -33,10 +33,10 @@ class biometa(SQLModel, table=True):  # type: ignore
     """Metadata is a combination of biosample and experiment."""
 
     id: str = Field(default_factory=idg.biometa, primary_key=True)
-    experiment_id: int = Field(default=None, foreign_key="experiment.id", index=True)
+    experiment_id: str = Field(default=None, foreign_key="experiment.id", index=True)
     biosample_id: str = Field(default=None, foreign_key="biosample.id", index=True)
-    readout_id: int = Field(default=None, foreign_key="readout.id", index=True)
-    featureset_id: int = Field(default=None, foreign_key="featureset.id", index=True)
+    readout_id: str = Field(default=None, foreign_key="readout.id", index=True)
+    featureset_id: str = Field(default=None, foreign_key="featureset.id", index=True)
     created_at: datetime = CreatedAt
 
 
@@ -59,8 +59,8 @@ class experiment(SQLModel, table=True):  # type: ignore
     external_id: str = Field(default=None, unique=True)
     name: Optional[str] = Field(default=None, index=True)
     date: datetime = Field(default=None, index=True)
-    project_id: int = Field(default=None, foreign_key="project.id", index=True)
-    experiment_type_id: int = Field(
+    project_id: str = Field(default=None, foreign_key="project.id", index=True)
+    experiment_type_id: str = Field(
         default=None, foreign_key="experiment_type.id", index=True
     )
     created_at: datetime = CreatedAt
