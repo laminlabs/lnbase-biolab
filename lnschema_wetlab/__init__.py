@@ -31,7 +31,7 @@ Tracking versions & migrations:
 # This is lnschema-module vvhc.
 _schema = "vvhc"
 _migration = None
-__version__ = "0.4.2"
+__version__ = "0.4.3"
 # _tables = ["biosample", "techsample"]
 
 from ._biosample import biosample
