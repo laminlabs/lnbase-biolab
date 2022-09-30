@@ -2,30 +2,17 @@ from datetime import datetime as datetime
 from typing import Optional  # noqa
 
 from lnschema_core._timestamps import CreatedAt
-from sqlmodel import Field, ForeignKeyConstraint, SQLModel
+from sqlmodel import Field, SQLModel
 
 from . import id as idg
 
 
 # fmt: off
 class dobject_biometa(SQLModel, table=True):  # type: ignore
-    """Link between :class:`~lnschema_wetlab.biometa` and `lnschema_core.dobject <https://lamin.ai/docs/lnschema-core/lnschema_core.dobject>`__."""  # noqa
+    """Link :class:`~lnschema_wetlab.biometa` and `dobject <https://lamin.ai/docs/lnschema-core/lnschema_core.dobject>`__."""  # noqa
 # fmt: on
-    __table_args__ = (
-        ForeignKeyConstraint(
-            ["dobject_id", "dobject_v"],
-            ["dobject.id", "dobject.v"],
-            name="dobject_biometa_dobject",
-        ),
-    )
-    dobject_id: str = Field(primary_key=True)
-    """Link to `lnschema_core.dobject
-    <https://lamin.ai/docs/lnschema-core/lnschema_core.dobject>`__.
-    """
-    dobject_v: str = Field(primary_key=True)
-    """Link to `lnschema_core.dobject
-    <https://lamin.ai/docs/lnschema-core/lnschema_core.dobject>`__.
-    """
+
+    dobject_id: str = Field(foreign_key="dobject.id", primary_key=True)
     biometa_id: str = Field(foreign_key="biometa.id", primary_key=True)
 
 
