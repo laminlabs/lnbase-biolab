@@ -3,6 +3,7 @@
 <!-- prettier-ignore -->
 Name | PR | Developer | Date | Version
 --- | --- | --- | --- | ---
+⬆️ Upgrade to lnschema_core 0.9.0 | [27](https://github.com/laminlabs/lnschema-wetlab/pull/27) | [falexwolf](https://github.com/falexwolf) | 2022-09-30 |
 ✏️ Changed ids to str | [26](https://github.com/laminlabs/lnschema-wetlab/pull/26) | [sunnyosun](https://github.com/sunnyosun) | 2022-09-29 | 0.4.3
 🍱 Added treatment, removed techsample_id in biosample | [25](https://github.com/laminlabs/lnschema-wetlab/pull/25) | [sunnyosun](https://github.com/sunnyosun) | 2022-09-28 | 0.4.2
 🎨 Added biosample_techsample, changed imports to default | [24](https://github.com/laminlabs/lnschema-wetlab/pull/24) | [sunnyosun](https://github.com/sunnyosun) | 2022-09-28 | 0.4.1
