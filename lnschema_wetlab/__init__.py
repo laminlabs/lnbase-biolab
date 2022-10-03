@@ -29,7 +29,7 @@ Tracking versions & migrations:
 
 """
 # This is lnschema-module vvhc.
-_schema = "vvhc"
+_schema_id = "vvhc"
 _migration = None
 __version__ = "0.5.0"
 # _tables = ["biosample", "techsample"]
