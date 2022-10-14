@@ -2,6 +2,7 @@ from datetime import datetime as datetime
 from typing import Optional  # noqa
 
 from lnschema_core._timestamps import CreatedAt
+from lnschema_core._users import CreatedBy
 from sqlmodel import Field, SQLModel
 
 from . import id as idg
@@ -69,6 +70,7 @@ class project(SQLModel, table=True):  # type: ignore
     external_id: str = Field(default=None, unique=True, index=True)
     name: Optional[str] = Field(default=None, index=True)
     created_at: datetime = CreatedAt
+    created_by: str = CreatedBy
 
 
 class treatment(SQLModel, table=True):  # type: ignore
@@ -90,7 +92,7 @@ class version_vvhc(SQLModel, table=True):  # type: ignore
 
     v: str = Field(primary_key=True)
     migration: Optional[str] = None
-    user_id: str = Field(foreign_key="user.id")
+    user_id: str = CreatedBy
     created_at: datetime = CreatedAt
 
 
