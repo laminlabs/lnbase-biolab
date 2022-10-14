@@ -9,6 +9,9 @@ config = context.config
 if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
+from lnschema_bionty import *  # noqa
+from lnschema_core import *  # noqa
+
 from lnschema_wetlab import *  # noqa
 
 target_metadata = SQLModel.metadata
