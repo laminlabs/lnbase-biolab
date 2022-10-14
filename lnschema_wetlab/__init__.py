@@ -30,8 +30,8 @@ Tracking versions & migrations:
 """
 # This is lnschema-module vvhc.
 _schema_id = "vvhc"
-_migration = None
-__version__ = "0.5.0"
+_migration = "3ed88d3699fd"
+__version__ = "0.6.0"
 # _tables = ["biosample", "techsample"]
 
 from ._biosample import biosample
