@@ -24,9 +24,6 @@ class biosample(SQLModel, table=True):  # type: ignore
     disease_id: Optional[str] = Field(
         default=None, foreign_key="disease.id", index=True
     )
-    cell_marker_id: Optional[str] = Field(
-        default=None, foreign_key="cell_marker.id", index=True
-    )
     treatment_id: Optional[str] = Field(
         default=None, foreign_key="treatment.id", index=True
     )
