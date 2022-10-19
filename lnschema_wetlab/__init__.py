@@ -10,14 +10,17 @@ This is the complete API reference:
    :toctree: .
 
    biometa
+   dobject_biometa
    biosample
    techsample
    biosample_techsample
    project
+   readout
+   treatment
    experiment
    experiment_type
-   dobject_biometa
-   readout
+   migration_vvhc
+   version_vvhc
 
 Tracking versions & migrations:
 
@@ -30,9 +33,8 @@ Tracking versions & migrations:
 """
 # This is lnschema-module vvhc.
 _schema_id = "vvhc"
-_migration = "3ed88d3699fd"
-__version__ = "0.6.1"
-# _tables = ["biosample", "techsample"]
+_migration = "01360b6492cc"
+__version__ = "0.7.0"
 
 from ._biosample import biosample
 from ._core import (  # noqa
@@ -47,18 +49,3 @@ from ._core import (  # noqa
     version_vvhc,
 )
 from ._techsample import biosample_techsample, techsample
-
-# if "biosample" in _tables:
-#     from ._biosample import biosample
-
-# if "techsample" in _tables:
-#     from ._techsample import techsample
-
-# if "experiment" in _tables:
-#    from ._experiment import experiment
-
-# if "experiment_type" in _tables:
-#    from ._experiment_type import experiment_type
-
-# if "readout" in _tables:
-#    from ._readout import readout
