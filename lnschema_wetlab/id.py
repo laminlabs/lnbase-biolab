@@ -12,7 +12,6 @@ Entity-related generators:
    treatment
    experiment
    experiment_type
-   project
 
 """
 from ._id import (  # noqa
@@ -20,7 +19,6 @@ from ._id import (  # noqa
     biosample,
     experiment,
     experiment_type,
-    project,
     readout,
     techsample,
     treatment,
