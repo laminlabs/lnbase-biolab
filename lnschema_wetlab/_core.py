@@ -47,7 +47,6 @@ class experiment(SQLModel, table=True):  # type: ignore
     external_id: str = Field(default=None, unique=True)
     name: Optional[str] = Field(default=None, index=True)
     date: datetime = Field(default=None, index=True)
-    project_id: str = Field(default=None, foreign_key="project.id", index=True)
     experiment_type_id: str = Field(
         default=None, foreign_key="experiment_type.id", index=True
     )
@@ -57,20 +56,10 @@ class experiment(SQLModel, table=True):  # type: ignore
 class experiment_type(SQLModel, table=True):  # type: ignore
     """Experiment types."""
 
-    id: str = Field(default_factory=idg.experiment, primary_key=True)
+    id: str = Field(default_factory=idg.experiment_type, primary_key=True)
     name: Optional[str] = None
     efo_id: str = Field(default=None, unique=True)
     created_at: datetime = CreatedAt
-
-
-class project(SQLModel, table=True):  # type: ignore
-    """Project."""
-
-    id: str = Field(default_factory=idg.project, primary_key=True)
-    external_id: str = Field(default=None, unique=True, index=True)
-    name: Optional[str] = Field(default=None, index=True)
-    created_at: datetime = CreatedAt
-    created_by: str = CreatedBy
 
 
 class treatment(SQLModel, table=True):  # type: ignore
