@@ -3,7 +3,7 @@
 <!-- prettier-ignore -->
 Name | PR | Developer | Date | Version
 --- | --- | --- | --- | ---
-✨ Added `project_experiment` table | [31](https://github.com/laminlabs/lnschema-wetlab/pull/31) | [sunnyosun](https://github.com/sunnyosun) | 2022-10-20 |
+✨ Added `project_experiment` table | [31](https://github.com/laminlabs/lnschema-wetlab/pull/31) | [sunnyosun](https://github.com/sunnyosun) | 2022-10-20 | 0.7.2
 🚚 Moved the `project` table to core schema | [30](https://github.com/laminlabs/lnschema-wetlab/pull/30) | [sunnyosun](https://github.com/sunnyosun) | 2022-10-19 | 0.7.1
 🔥 Removed `cell_marker_id` from `biosample` | [29](https://github.com/laminlabs/lnschema-wetlab/pull/29) | [sunnyosun](https://github.com/sunnyosun) | 2022-10-17 | 0.7.0
 🚚 Added created_by to project table | [28](https://github.com/laminlabs/lnschema-wetlab/pull/28) | [falexwolf](https://github.com/falexwolf) | 2022-10-14 | 0.6.0

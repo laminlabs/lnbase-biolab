@@ -33,8 +33,8 @@ Tracking versions & migrations:
 """
 # This is lnschema-module vvhc.
 _schema_id = "vvhc"
-_migration = "a171e861e473"
-__version__ = "0.7.1"
+_migration = "a5d6b07f1401"
+__version__ = "0.7.2"
 
 from ._biosample import biosample
 from ._core import (  # noqa
