@@ -58,8 +58,8 @@ class experiment(SQLModel, table=True):  # type: ignore
 class project_experiment(SQLModel, table=True):  # type: ignore
     """Link table of project and experiment."""
 
-    project_id: str = Field(foreign_key="project.id", index=True)
-    experiment_id: str = Field(foreign_key="experiment.id", index=True)
+    project_id: str = Field(foreign_key="project.id", primary_key=True)
+    experiment_id: str = Field(foreign_key="experiment.id", primary_key=True)
 
 
 class experiment_type(SQLModel, table=True):  # type: ignore
