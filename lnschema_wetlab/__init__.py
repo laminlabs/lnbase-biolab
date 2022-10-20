@@ -16,6 +16,7 @@ This is the complete API reference:
    biosample_techsample
    readout
    treatment
+   project_experiment
    experiment
    experiment_type
    migration_vvhc
@@ -42,6 +43,7 @@ from ._core import (  # noqa
     experiment,
     experiment_type,
     migration_vvhc,
+    project_experiment,
     readout,
     treatment,
     version_vvhc,

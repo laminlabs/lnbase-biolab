@@ -25,6 +25,7 @@ class biometa(SQLModel, table=True):  # type: ignore
     biosample_id: str = Field(default=None, foreign_key="biosample.id", index=True)
     readout_id: str = Field(default=None, foreign_key="readout.id", index=True)
     featureset_id: str = Field(default=None, foreign_key="featureset.id", index=True)
+    created_by: str = CreatedBy
     created_at: datetime = CreatedAt
 
 
@@ -45,19 +46,27 @@ class experiment(SQLModel, table=True):  # type: ignore
 
     id: str = Field(default_factory=idg.experiment, primary_key=True)
     external_id: str = Field(default=None, unique=True)
-    name: Optional[str] = Field(default=None, index=True)
+    name: str = Field(default=None, index=True)
     date: datetime = Field(default=None, index=True)
     experiment_type_id: str = Field(
         default=None, foreign_key="experiment_type.id", index=True
     )
+    created_by: str = CreatedBy
     created_at: datetime = CreatedAt
+
+
+class project_experiment(SQLModel, table=True):  # type: ignore
+    """Link table of project and experiment."""
+
+    project_id: str = Field(foreign_key="project.id", primary_key=True)
+    experiment_id: str = Field(foreign_key="experiment.id", primary_key=True)
 
 
 class experiment_type(SQLModel, table=True):  # type: ignore
     """Experiment types."""
 
     id: str = Field(default_factory=idg.experiment_type, primary_key=True)
-    name: Optional[str] = None
+    name: str = Field(default=None, index=True)
     efo_id: str = Field(default=None, unique=True)
     created_at: datetime = CreatedAt
 
@@ -67,7 +76,7 @@ class treatment(SQLModel, table=True):  # type: ignore
 
     id: str = Field(default_factory=idg.treatment, primary_key=True)
     external_id: str = Field(default=None, unique=True, index=True)
-    name: Optional[str] = Field(default=None, index=True)
+    name: str = Field(default=None, index=True)
     created_at: datetime = CreatedAt
 
 
