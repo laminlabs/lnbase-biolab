@@ -17,7 +17,7 @@ class DObjectBiometa(SQLModel, table=True):  # type: ignore
     """Link :class:`~lnschema_wetlab.Biometa` and `DObject <https://lamin.ai/docs/lnschema-core/lnschema_core.DObject>`__."""  # noqa
 # fmt: on
 
-    __tablename__ = f"{prefix}dset_dobject"
+    __tablename__ = f"{prefix}dobject_biometa"
 
     dobject_id: str = Field(foreign_key="core.dobject.id", primary_key=True)
     biometa_id: str = Field(foreign_key="wetlab.biometa.id", primary_key=True)
