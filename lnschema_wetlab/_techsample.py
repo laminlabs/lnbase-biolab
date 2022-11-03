@@ -2,12 +2,16 @@ from datetime import datetime as datetime
 from typing import Optional
 
 from lnschema_core._timestamps import CreatedAt, UpdatedAt
-from sqlmodel import Field, SQLModel
+from lnschema_core.dev.sqlmodel import schema_sqlmodel
+from sqlmodel import Field
 
-from . import id as idg
+from . import _name as schema_name
+from .dev import id as idg
+
+SQLModel, prefix, schema_arg = schema_sqlmodel(schema_name)
 
 
-class techsample(SQLModel, table=True):  # type: ignore
+class Techsample(SQLModel, table=True):  # type: ignore
     """Tech samples that are generated due to instrument units."""
 
     id: str = Field(default_factory=idg.techsample, primary_key=True)
@@ -20,8 +24,10 @@ class techsample(SQLModel, table=True):  # type: ignore
     updated_at: Optional[datetime] = UpdatedAt
 
 
-class biosample_techsample(SQLModel, table=True):  # type: ignore
+class BiosampleTechsample(SQLModel, table=True):  # type: ignore
     """Link table of biosample and techsample."""
 
-    biosample_id: str = Field(foreign_key="biosample.id", primary_key=True)
-    techsample_id: str = Field(foreign_key="techsample.id", primary_key=True)
+    __tablename__ = f"{prefix}biosample_techsample"
+
+    biosample_id: str = Field(foreign_key="wetlab.biosample.id", primary_key=True)
+    techsample_id: str = Field(foreign_key="wetlab.techsample.id", primary_key=True)
