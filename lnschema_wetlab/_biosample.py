@@ -31,7 +31,7 @@ class Biosample(SQLModel, table=True):  # type: ignore
         default=None, foreign_key="bionty.disease.id", index=True
     )
     treatment_id: Optional[str] = Field(
-        default=None, foreign_key="bionty.treatment.id", index=True
+        default=None, foreign_key="wetlab.treatment.id", index=True
     )
     created_at: datetime = CreatedAt
     updated_at: Optional[datetime] = UpdatedAt
