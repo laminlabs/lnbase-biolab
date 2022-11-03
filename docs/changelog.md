@@ -3,6 +3,7 @@
 <!-- prettier-ignore -->
 Name | PR | Developer | Date | Version
 --- | --- | --- | --- | ---
+:bug: Fix treatment ref | [33](https://github.com/laminlabs/lnschema-wetlab/pull/33) | [falexwolf](https://github.com/falexwolf) | 2022-11-03 |
 🎨 Modularize and capitalize | [32](https://github.com/laminlabs/lnschema-wetlab/pull/32) | [falexwolf](https://github.com/falexwolf) | 2022-11-03 | 0.8.0
 ✨ Added `project_experiment` table | [31](https://github.com/laminlabs/lnschema-wetlab/pull/31) | [sunnyosun](https://github.com/sunnyosun) | 2022-10-20 | 0.7.2
 🚚 Moved the `project` table to core schema | [30](https://github.com/laminlabs/lnschema-wetlab/pull/30) | [sunnyosun](https://github.com/sunnyosun) | 2022-10-19 | 0.7.1
