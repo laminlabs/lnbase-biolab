@@ -31,8 +31,8 @@ Development tools:
 # This is lnschema-module vvhc.
 _schema_id = "vvhc"
 _name = "wetlab"
-_migration = "a5d6b07f1401"
-__version__ = "0.7.2"
+_migration = "bfda12fc80a8"
+__version__ = "0.8.0"
 
 from ._biosample import Biosample
 from ._core import (  # noqa
