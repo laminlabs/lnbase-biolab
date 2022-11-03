@@ -42,6 +42,7 @@ def upgrade() -> None:
         op.execute("alter table public.biometa set schema wetlab")
         op.execute("alter table public.dobject_biometa set schema wetlab")
         op.execute("alter table public.biosample set schema wetlab")
+        op.execute("alter table public.techsample set schema wetlab")
         op.execute("alter table public.biosample_techsample set schema wetlab")
         op.execute("alter table public.readout set schema wetlab")
         op.execute("alter table public.treatment set schema wetlab")
