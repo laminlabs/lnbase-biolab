@@ -2,12 +2,16 @@ from datetime import datetime as datetime
 from typing import Optional
 
 from lnschema_core._timestamps import CreatedAt, UpdatedAt
-from sqlmodel import Field, SQLModel
+from lnschema_core.dev.sqlmodel import schema_sqlmodel
+from sqlmodel import Field
 
-from . import id as idg
+from . import _name as schema_name
+from .dev import id as idg
+
+SQLModel, prefix, schema_arg = schema_sqlmodel(schema_name)
 
 
-class biosample(SQLModel, table=True):  # type: ignore
+class Biosample(SQLModel, table=True):  # type: ignore
     """Biological samples that are registered in experiments."""
 
     id: str = Field(default_factory=idg.biosample, primary_key=True)
@@ -15,17 +19,19 @@ class biosample(SQLModel, table=True):  # type: ignore
     name: Optional[str] = Field(default=None, index=True)
     batch: Optional[str] = None
     species_id: Optional[str] = Field(
-        default=None, foreign_key="species.id", index=True
+        default=None, foreign_key="bionty.species.id", index=True
     )
-    tissue_id: Optional[str] = Field(default=None, foreign_key="tissue.id", index=True)
+    tissue_id: Optional[str] = Field(
+        default=None, foreign_key="bionty.tissue.id", index=True
+    )
     cell_type_id: Optional[str] = Field(
-        default=None, foreign_key="cell_type.id", index=True
+        default=None, foreign_key="bionty.cell_type.id", index=True
     )
     disease_id: Optional[str] = Field(
-        default=None, foreign_key="disease.id", index=True
+        default=None, foreign_key="bionty.disease.id", index=True
     )
     treatment_id: Optional[str] = Field(
-        default=None, foreign_key="treatment.id", index=True
+        default=None, foreign_key="bionty.treatment.id", index=True
     )
     created_at: datetime = CreatedAt
     updated_at: Optional[datetime] = UpdatedAt
