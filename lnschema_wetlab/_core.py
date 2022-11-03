@@ -30,7 +30,7 @@ class Biometa(SQLModel, table=True):  # type: ignore
     experiment_id: str = Field(default=None, foreign_key="wetlab.experiment.id", index=True)  # noqa
     biosample_id: str = Field(default=None, foreign_key="wetlab.biosample.id", index=True)  # noqa
     readout_id: str = Field(default=None, foreign_key="wetlab.readout.id", index=True)
-    featureset_id: str = Field(default=None, foreign_key="wetlab.featureset.id", index=True)  # noqa
+    featureset_id: str = Field(default=None, foreign_key="bionty.featureset.id", index=True)  # noqa
     created_by: str = CreatedBy
     created_at: datetime = CreatedAt
 
