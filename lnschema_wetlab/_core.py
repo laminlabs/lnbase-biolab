@@ -1,38 +1,49 @@
 from datetime import datetime as datetime
 from typing import Optional  # noqa
 
+from lnschema_core import DObject
 from lnschema_core._timestamps import CreatedAt
 from lnschema_core._users import CreatedBy
 from lnschema_core.dev.sqlmodel import schema_sqlmodel
-from sqlmodel import Field
+from sqlalchemy import Column, ForeignKey, Table
+from sqlalchemy.orm import relationship
+from sqlmodel import Field, Relationship
 
 from . import _name as schema_name
 from .dev import id as idg
 
 SQLModel, prefix, schema_arg = schema_sqlmodel(schema_name)
 
-
-# fmt: off
-class DObjectBiometa(SQLModel, table=True):  # type: ignore
-    """Link :class:`~lnschema_wetlab.Biometa` and `DObject <https://lamin.ai/docs/lnschema-core/lnschema_core.DObject>`__."""  # noqa
-# fmt: on
-
-    __tablename__ = f"{prefix}dobject_biometa"
-
-    dobject_id: str = Field(foreign_key="core.dobject.id", primary_key=True)
-    biometa_id: str = Field(foreign_key="wetlab.biometa.id", primary_key=True)
+dobject_biometa = Table(
+    f"{prefix}dobject_biometa",
+    SQLModel.metadata,
+    Column("dobject_id", ForeignKey("core.dobject.id"), primary_key=True),
+    Column("biometa_id", ForeignKey("wetlab.biometa.id"), primary_key=True),
+)
 
 
 class Biometa(SQLModel, table=True):  # type: ignore
     """Metadata is a combination of biosample and experiment."""
 
     id: str = Field(default_factory=idg.biometa, primary_key=True)
-    experiment_id: str = Field(default=None, foreign_key="wetlab.experiment.id", index=True)  # noqa
-    biosample_id: str = Field(default=None, foreign_key="wetlab.biosample.id", index=True)  # noqa
+    experiment_id: str = Field(
+        default=None, foreign_key="wetlab.experiment.id", index=True
+    )  # noqa
+    biosample_id: str = Field(
+        default=None, foreign_key="wetlab.biosample.id", index=True
+    )  # noqa
     readout_id: str = Field(default=None, foreign_key="wetlab.readout.id", index=True)
-    featureset_id: str = Field(default=None, foreign_key="bionty.featureset.id", index=True)  # noqa
     created_by: str = CreatedBy
     created_at: datetime = CreatedAt
+    dobjects: DObject = Relationship(
+        back_populates="biometas",
+        sa_relationship_kwargs=dict(secondary=dobject_biometa),
+    )
+
+
+DObject.biometas = relationship(
+    Biometa, back_populates="dobjects", secondary=dobject_biometa
+)
 
 
 class Readout(SQLModel, table=True):  # type: ignore

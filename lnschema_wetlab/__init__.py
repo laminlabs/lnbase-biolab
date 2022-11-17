@@ -10,7 +10,6 @@ This is the complete API reference:
    :toctree: .
 
    Biometa
-   DObjectBiometa
    Biosample
    Techsample
    BiosampleTechsample
@@ -37,11 +36,11 @@ __version__ = "0.8.2"
 from ._biosample import Biosample
 from ._core import (  # noqa
     Biometa,
-    DObjectBiometa,
     Experiment,
     ExperimentType,
     ProjectExperiment,
     Readout,
     Treatment,
+    dobject_biometa,
 )
 from ._techsample import BiosampleTechsample, Techsample
