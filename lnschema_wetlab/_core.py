@@ -33,6 +33,7 @@ class Biometa(SQLModel, table=True):  # type: ignore
         default=None, foreign_key="wetlab.biosample.id", index=True
     )  # noqa
     readout_id: str = Field(default=None, foreign_key="wetlab.readout.id", index=True)
+    readout: "Readout" = Relationship()
     created_by: str = CreatedBy
     created_at: datetime = CreatedAt
     dobjects: DObject = Relationship(
