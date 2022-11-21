@@ -3,6 +3,7 @@
 <!-- prettier-ignore -->
 Name | PR | Developer | Date | Version
 --- | --- | --- | --- | ---
+✨ Add relationships to `Biosample` | [36](https://github.com/laminlabs/lnschema-wetlab/pull/36) | [falexwolf](https://github.com/falexwolf) | 2022-11-21 |
 🏗️ Introduce relationships | [35](https://github.com/laminlabs/lnschema-wetlab/pull/35) | [falexwolf](https://github.com/falexwolf) | 2022-11-17 | 0.9.0
 🐛 Fix table name | [34](https://github.com/laminlabs/lnschema-wetlab/pull/34) | [falexwolf](https://github.com/falexwolf) | 2022-11-03 | 0.8.2
 🐛 Fix treatment ref | [33](https://github.com/laminlabs/lnschema-wetlab/pull/33) | [falexwolf](https://github.com/falexwolf) | 2022-11-03 | 0.8.1
