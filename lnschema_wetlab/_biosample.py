@@ -7,7 +7,6 @@ from lnschema_core.dev.sqlmodel import schema_sqlmodel
 from sqlmodel import Field, Relationship
 
 from . import _name as schema_name
-from ._core import Treatment
 from .dev import id as idg
 
 SQLModel, prefix, schema_arg = schema_sqlmodel(schema_name)
@@ -39,6 +38,15 @@ class Biosample(SQLModel, table=True):  # type: ignore
     treatment_id: Optional[str] = Field(
         default=None, foreign_key="wetlab.treatment.id", index=True
     )
-    treatment: Treatment = Relationship()
+    treatment: "Treatment" = Relationship()
     created_at: datetime = CreatedAt
     updated_at: Optional[datetime] = UpdatedAt
+
+
+class Treatment(SQLModel, table=True):  # type: ignore
+    """Treatment."""
+
+    id: str = Field(default_factory=idg.treatment, primary_key=True)
+    external_id: str = Field(default=None, unique=True, index=True)
+    name: str = Field(default=None, index=True)
+    created_at: datetime = CreatedAt

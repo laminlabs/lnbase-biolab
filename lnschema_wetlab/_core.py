@@ -10,6 +10,7 @@ from sqlalchemy.orm import relationship
 from sqlmodel import Field, Relationship
 
 from . import _name as schema_name
+from ._biosample import Biosample
 from .dev import id as idg
 
 SQLModel, prefix, schema_arg = schema_sqlmodel(schema_name)
@@ -32,6 +33,7 @@ class Biometa(SQLModel, table=True):  # type: ignore
     biosample_id: str = Field(
         default=None, foreign_key="wetlab.biosample.id", index=True
     )  # noqa
+    biosample: Biosample = Relationship()
     readout_id: str = Field(default=None, foreign_key="wetlab.readout.id", index=True)
     readout: "Readout" = Relationship()
     created_by: str = CreatedBy
@@ -90,13 +92,4 @@ class ExperimentType(SQLModel, table=True):  # type: ignore
     id: str = Field(default_factory=idg.experiment_type, primary_key=True)
     name: str = Field(default=None, index=True)
     efo_id: str = Field(default=None, unique=True)
-    created_at: datetime = CreatedAt
-
-
-class Treatment(SQLModel, table=True):  # type: ignore
-    """Treatment."""
-
-    id: str = Field(default_factory=idg.treatment, primary_key=True)
-    external_id: str = Field(default=None, unique=True, index=True)
-    name: str = Field(default=None, index=True)
     created_at: datetime = CreatedAt
