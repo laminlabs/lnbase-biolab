@@ -3,28 +3,21 @@
 :end-line: 3
 ```
 
-`lnschema-wetlab` is an extendable wetlab schema to track data generation in wet labs.
+`lnschema-wetlab` is an extendable schema to track data generation in wet labs.
 
-Concepts:
+Data objects (`DObject`) get directly linked to
 
-Datasets generated in an experiment (`dobject`) are linked to `biometa`, which stores all information about experimental and scientific entities.
-
-- `experiment`: An experiement performed to generate data.
-- `biosample`: The biological samples from which data are generated.
-- `readout`: The measurements types applied to the biosamples.
-- `featureset`: The sets of features that are contained in the data.
-
-These entities allow mapping arbitrarily complex experimental designs.
-While other schema designs are possible, this design enables simple queries by directly linking `biometa` against the 4-tuple.
+- `Experiment`: An experiment performed to generate data.
+- `Biosample`: The biological samples from which data are generated.
+- `Readout`: The measurements types applied to the biosamples.
 
 The order of this tuple is inspired by the workflow:
 
-- Plan an `experiment` based on an `experiment_design`:
-  - `experiment_design`: metadata that describes experiments to perform
-- Prepare a `biosample` containing all metadata including `tissue`, `species`, `patient`, `perturbagen`, `time`, `dose`, `mutation`, etc.
-  - `techsample` A biosample extension for specific experiments that require pooling or splitting biosamples.
-- Choose one or several `readout`.
-- Determine a set of features that will be measured.
+- Plan an `Experiment` based on an `ExperimentType`:
+  - `ExperimentType`: metadata that describes experiments to perform
+- Prepare a `Biosample` containing all metadata including `Tissue`, `Species`, `Donor`, `Treatment`, `Time`, `Mutation`, etc.
+  - `Techsample` A biosample extension for specific experiments that require pooling or splitting biosamples.
+- Choose one or several `Readout`.
 
 Install:
 
