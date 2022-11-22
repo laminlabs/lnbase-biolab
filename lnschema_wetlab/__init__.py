@@ -9,13 +9,10 @@ This is the complete API reference:
 .. autosummary::
    :toctree: .
 
-   Biometa
    Biosample
    Techsample
-   BiosampleTechsample
    Readout
    Treatment
-   ProjectExperiment
    Experiment
    ExperimentType
 
@@ -25,6 +22,7 @@ Development tools:
    :toctree: .
 
    dev
+   link
 
 """
 # This is lnschema-module vvhc.
@@ -33,13 +31,12 @@ _name = "wetlab"
 _migration = "bfda12fc80a8"
 __version__ = "0.9.2"
 
-from ._biosample import Biosample, Treatment
+from . import dev, link
 from ._core import (  # noqa
-    Biometa,
+    Biosample,
     Experiment,
     ExperimentType,
-    ProjectExperiment,
     Readout,
-    dobject_biometa,
+    Techsample,
+    Treatment,
 )
-from ._techsample import BiosampleTechsample, Techsample

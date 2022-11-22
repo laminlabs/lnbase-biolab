@@ -1,26 +1,69 @@
 from datetime import datetime as datetime
 from typing import Optional  # noqa
 
-from lnschema_core import DObject
-from lnschema_core._timestamps import CreatedAt
+from lnschema_bionty import CellType, Disease, Species, Tissue
+from lnschema_core._timestamps import CreatedAt, UpdatedAt
 from lnschema_core._users import CreatedBy
 from lnschema_core.dev.sqlmodel import schema_sqlmodel
-from sqlalchemy import Column, ForeignKey, Table
-from sqlalchemy.orm import relationship
 from sqlmodel import Field, Relationship
 
 from . import _name as schema_name
-from ._biosample import Biosample
 from .dev import id as idg
 
 SQLModel, prefix, schema_arg = schema_sqlmodel(schema_name)
 
-dobject_biometa = Table(
-    f"{prefix}dobject_biometa",
-    SQLModel.metadata,
-    Column("dobject_id", ForeignKey("core.dobject.id"), primary_key=True),
-    Column("biometa_id", ForeignKey("wetlab.biometa.id"), primary_key=True),
-)
+
+class Treatment(SQLModel, table=True):  # type: ignore
+    """Treatment."""
+
+    id: str = Field(default_factory=idg.treatment, primary_key=True)
+    external_id: str = Field(default=None, unique=True, index=True)
+    name: str = Field(default=None, index=True)
+    created_at: datetime = CreatedAt
+
+
+class Biosample(SQLModel, table=True):  # type: ignore
+    """Biological samples that are registered in experiments."""
+
+    id: str = Field(default_factory=idg.biosample, primary_key=True)
+    external_id: Optional[str] = Field(default=None, index=True, unique=True)
+    name: Optional[str] = Field(default=None, index=True)
+    batch: Optional[str] = None
+    species_id: Optional[str] = Field(
+        default=None, foreign_key="bionty.species.id", index=True
+    )
+    species: Species = Relationship()
+    tissue_id: Optional[str] = Field(
+        default=None, foreign_key="bionty.tissue.id", index=True
+    )
+    tissue: Tissue = Relationship()
+    cell_type_id: Optional[str] = Field(
+        default=None, foreign_key="bionty.cell_type.id", index=True
+    )
+    cell_type: CellType = Relationship()
+    disease_id: Optional[str] = Field(
+        default=None, foreign_key="bionty.disease.id", index=True
+    )
+    disease: Disease = Relationship()
+    treatment_id: Optional[str] = Field(
+        default=None, foreign_key="wetlab.treatment.id", index=True
+    )
+    treatment: Treatment = Relationship()
+    created_at: datetime = CreatedAt
+    updated_at: Optional[datetime] = UpdatedAt
+
+
+class Techsample(SQLModel, table=True):  # type: ignore
+    """Tech samples that are generated due to instrument units."""
+
+    id: str = Field(default_factory=idg.techsample, primary_key=True)
+    external_id: Optional[str] = Field(default=None, index=True, unique=True)
+    name: Optional[str] = Field(default=None, index=True)
+    batch: Optional[str] = None
+    filepath_r1: Optional[str] = None
+    filepath_r2: Optional[str] = None
+    created_at: datetime = CreatedAt
+    updated_at: Optional[datetime] = UpdatedAt
 
 
 class Readout(SQLModel, table=True):  # type: ignore
@@ -35,32 +78,6 @@ class Readout(SQLModel, table=True):  # type: ignore
     created_at: datetime = CreatedAt
 
 
-class Biometa(SQLModel, table=True):  # type: ignore
-    """Metadata is a combination of biosample and experiment."""
-
-    id: str = Field(default_factory=idg.biometa, primary_key=True)
-    experiment_id: str = Field(
-        default=None, foreign_key="wetlab.experiment.id", index=True
-    )  # noqa
-    biosample_id: str = Field(
-        default=None, foreign_key="wetlab.biosample.id", index=True
-    )  # noqa
-    biosample: Biosample = Relationship()
-    readout_id: str = Field(default=None, foreign_key="wetlab.readout.id", index=True)
-    readout: Readout = Relationship()
-    created_by: str = CreatedBy
-    created_at: datetime = CreatedAt
-    dobjects: DObject = Relationship(
-        back_populates="biometas",
-        sa_relationship_kwargs=dict(secondary=dobject_biometa),
-    )
-
-
-DObject.biometas = relationship(
-    Biometa, back_populates="dobjects", secondary=dobject_biometa
-)
-
-
 class Experiment(SQLModel, table=True):  # type: ignore
     """Experiments."""
 
@@ -73,15 +90,6 @@ class Experiment(SQLModel, table=True):  # type: ignore
     )
     created_by: str = CreatedBy
     created_at: datetime = CreatedAt
-
-
-class ProjectExperiment(SQLModel, table=True):  # type: ignore
-    """Link table of project and experiment."""
-
-    __tablename__ = f"{prefix}project_experiment"
-
-    project_id: str = Field(foreign_key="core.project.id", primary_key=True)
-    experiment_id: str = Field(foreign_key="wetlab.experiment.id", primary_key=True)
 
 
 class ExperimentType(SQLModel, table=True):  # type: ignore
