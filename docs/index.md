@@ -7,15 +7,11 @@
 
 Concepts:
 
-Datasets generated in an experiment (`dobject`) are linked to `biometa`, which stores all information about experimental and scientific entities.
+Data objects (`dobject`) get directly linked to
 
-- `experiment`: An experiement performed to generate data.
+- `experiment`: An experiment performed to generate data.
 - `biosample`: The biological samples from which data are generated.
 - `readout`: The measurements types applied to the biosamples.
-- `featureset`: The sets of features that are contained in the data.
-
-These entities allow mapping arbitrarily complex experimental designs.
-While other schema designs are possible, this design enables simple queries by directly linking `biometa` against the 4-tuple.
 
 The order of this tuple is inspired by the workflow:
 
@@ -24,7 +20,6 @@ The order of this tuple is inspired by the workflow:
 - Prepare a `biosample` containing all metadata including `tissue`, `species`, `patient`, `perturbagen`, `time`, `dose`, `mutation`, etc.
   - `techsample` A biosample extension for specific experiments that require pooling or splitting biosamples.
 - Choose one or several `readout`.
-- Determine a set of features that will be measured.
 
 Install:
 
