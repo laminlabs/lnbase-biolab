@@ -23,6 +23,18 @@ dobject_biometa = Table(
 )
 
 
+class Readout(SQLModel, table=True):  # type: ignore
+    """Readout of experiments."""
+
+    id: str = Field(default_factory=idg.readout, primary_key=True)
+    efo_id: str = Field(default=None, unique=True, index=True)
+    name: Optional[str] = None
+    molecule: Optional[str] = None
+    instrument: Optional[str] = None
+    measurement: Optional[str] = None
+    created_at: datetime = CreatedAt
+
+
 class Biometa(SQLModel, table=True):  # type: ignore
     """Metadata is a combination of biosample and experiment."""
 
@@ -47,18 +59,6 @@ class Biometa(SQLModel, table=True):  # type: ignore
 DObject.biometas = relationship(
     Biometa, back_populates="dobjects", secondary=dobject_biometa
 )
-
-
-class Readout(SQLModel, table=True):  # type: ignore
-    """Readout of experiments."""
-
-    id: str = Field(default_factory=idg.readout, primary_key=True)
-    efo_id: str = Field(default=None, unique=True, index=True)
-    name: Optional[str] = None
-    molecule: Optional[str] = None
-    instrument: Optional[str] = None
-    measurement: Optional[str] = None
-    created_at: datetime = CreatedAt
 
 
 class Experiment(SQLModel, table=True):  # type: ignore
