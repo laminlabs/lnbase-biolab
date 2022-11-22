@@ -31,7 +31,7 @@ Development tools:
 _schema_id = "vvhc"
 _name = "wetlab"
 _migration = "bfda12fc80a8"
-__version__ = "0.9.1"
+__version__ = "0.9.2"
 
 from ._biosample import Biosample, Treatment
 from ._core import (  # noqa
