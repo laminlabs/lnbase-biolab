@@ -1,10 +1,7 @@
-from lnschema_core import DObject
 from lnschema_core.dev.sqlmodel import schema_sqlmodel
-from sqlalchemy.orm import relationship
 from sqlmodel import Field
 
 from . import _name as schema_name
-from ._core import Biosample, Experiment, Readout
 
 SQLModel, prefix, schema_arg = schema_sqlmodel(schema_name)
 
@@ -52,24 +49,3 @@ class DObjectReadout(SQLModel, table=True):  # type: ignore
 
     dobject_id: str = Field(foreign_key="core.dobject.id", primary_key=True)
     readout_id: str = Field(foreign_key="wetlab.readout.id", primary_key=True)
-
-
-Experiment.dobjects = relationship(
-    DObject, back_populates="experiments", secondary=DObjectExperiment.__table__
-)
-DObject.experiments = relationship(
-    Experiment, back_populates="dobjects", secondary=DObjectExperiment.__table__
-)
-Biosample.dobjects = relationship(
-    DObject, back_populates="biosamples", secondary=DObjectBiosample.__table__
-)
-DObject.biosamples = relationship(
-    Biosample, back_populates="dobjects", secondary=DObjectBiosample.__table__
-)
-Readout.dobjects = relationship(
-    DObject, back_populates="readouts", secondary=DObjectReadout.__table__
-)
-DObject.readouts = relationship(
-    Readout,
-    secondary=DObjectReadout.__table__,  # no back_populates as these can be many
-)

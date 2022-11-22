@@ -2,12 +2,21 @@ from datetime import datetime as datetime
 from typing import Optional  # noqa
 
 from lnschema_bionty import CellType, Disease, Species, Tissue
+from lnschema_core import DObject
 from lnschema_core._timestamps import CreatedAt, UpdatedAt
 from lnschema_core._users import CreatedBy
 from lnschema_core.dev.sqlmodel import schema_sqlmodel
+from sqlalchemy.orm import relationship
 from sqlmodel import Field, Relationship
 
 from . import _name as schema_name
+from ._link import (  # noqa
+    BiosampleTechsample,
+    DObjectBiosample,
+    DObjectExperiment,
+    DObjectReadout,
+    ProjectExperiment,
+)
 from .dev import id as idg
 
 SQLModel, prefix, schema_arg = schema_sqlmodel(schema_name)
@@ -51,6 +60,15 @@ class Biosample(SQLModel, table=True):  # type: ignore
     treatment: Treatment = Relationship()
     created_at: datetime = CreatedAt
     updated_at: Optional[datetime] = UpdatedAt
+    dobjects: DObject = Relationship(
+        back_populates="biosamples",
+        sa_relationship_kwargs=dict(secondary=DObjectBiosample.__table__),
+    )
+
+
+DObject.biosamples = relationship(
+    Biosample, back_populates="dobjects", secondary=DObjectBiosample.__table__
+)
 
 
 class Techsample(SQLModel, table=True):  # type: ignore
@@ -76,6 +94,17 @@ class Readout(SQLModel, table=True):  # type: ignore
     instrument: Optional[str] = None
     measurement: Optional[str] = None
     created_at: datetime = CreatedAt
+    dobjects: DObject = Relationship(
+        back_populates="readouts",
+        sa_relationship_kwargs=dict(secondary=DObjectReadout.__table__),
+    )
+
+
+DObject.readouts = relationship(
+    Readout,
+    back_populates="dobjects",
+    secondary=DObjectReadout.__table__,
+)
 
 
 class Experiment(SQLModel, table=True):  # type: ignore
@@ -90,6 +119,15 @@ class Experiment(SQLModel, table=True):  # type: ignore
     )
     created_by: str = CreatedBy
     created_at: datetime = CreatedAt
+    dobjects: DObject = Relationship(
+        back_populates="experiments",
+        sa_relationship_kwargs=dict(secondary=DObjectExperiment.__table__),
+    )
+
+
+DObject.experiments = relationship(
+    Experiment, back_populates="dobjects", secondary=DObjectExperiment.__table__
+)
 
 
 class ExperimentType(SQLModel, table=True):  # type: ignore
