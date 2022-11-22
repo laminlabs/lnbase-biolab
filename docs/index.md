@@ -3,9 +3,7 @@
 :end-line: 3
 ```
 
-`lnschema-wetlab` is an extendable wetlab schema to track data generation in wet labs.
-
-Concepts:
+`lnschema-wetlab` is an extendable schema to track data generation in wet labs.
 
 Data objects (`DObject`) get directly linked to
 
