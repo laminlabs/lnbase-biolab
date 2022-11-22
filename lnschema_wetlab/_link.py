@@ -54,11 +54,20 @@ class DObjectReadout(SQLModel, table=True):  # type: ignore
     readout_id: str = Field(foreign_key="wetlab.readout.id", primary_key=True)
 
 
+Experiment.dobjects = relationship(
+    DObject, back_populates="experiments", secondary=DObjectExperiment.__table__
+)
 DObject.experiments = relationship(
     Experiment, back_populates="dobjects", secondary=DObjectExperiment.__table__
 )
+Biosample.dobjects = relationship(
+    DObject, back_populates="biosamples", secondary=DObjectBiosample.__table__
+)
 DObject.biosamples = relationship(
     Biosample, back_populates="dobjects", secondary=DObjectBiosample.__table__
+)
+Readout.dobjects = relationship(
+    DObject, back_populates="readouts", secondary=DObjectReadout.__table__
 )
 DObject.readouts = relationship(
     Readout,
