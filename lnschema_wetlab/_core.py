@@ -82,6 +82,15 @@ class Techsample(SQLModel, table=True):  # type: ignore
     filepath_r2: Optional[str] = None
     created_at: datetime = CreatedAt
     updated_at: Optional[datetime] = UpdatedAt
+    biosamples: Biosample = Relationship(
+        back_populates="techsamples",
+        sa_relationship_kwargs=dict(secondary=BiosampleTechsample.__table__),
+    )
+
+
+Biosample.techsamples = relationship(
+    Techsample, back_populates="biosamples", secondary=BiosampleTechsample.__table__
+)
 
 
 class Readout(SQLModel, table=True):  # type: ignore
