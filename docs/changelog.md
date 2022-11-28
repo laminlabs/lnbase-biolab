@@ -3,6 +3,7 @@
 <!-- prettier-ignore -->
 Name | PR | Developer | Date | Version
 --- | --- | --- | --- | ---
+🩹 Add to `__sqlmodel_relationships__` | [41](https://github.com/laminlabs/lnschema-wetlab/pull/41) | [sunnyosun](https://github.com/sunnyosun) | 2022-11-28 |
 ✨ Add relationship of bio and tech samples | [40](https://github.com/laminlabs/lnschema-wetlab/pull/40) | [sunnyosun](https://github.com/sunnyosun) | 2022-11-25 | 0.10.1
 🏗️ Drop `Biometa` | [39](https://github.com/laminlabs/lnschema-wetlab/pull/39) | [falexwolf](https://github.com/falexwolf) | 2022-11-22 | 0.10.0
 🎨 Define `Readout` first | [38](https://github.com/laminlabs/lnschema-wetlab/pull/38) | [falexwolf](https://github.com/falexwolf) | 2022-11-22 | 0.9.2
