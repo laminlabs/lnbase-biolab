@@ -69,6 +69,7 @@ class Biosample(SQLModel, table=True):  # type: ignore
 DObject.biosamples = relationship(
     Biosample, back_populates="dobjects", secondary=DObjectBiosample.__table__
 )
+DObject.__sqlmodel_relationships__["biosamples"] = None
 
 
 class Techsample(SQLModel, table=True):  # type: ignore
@@ -114,6 +115,7 @@ DObject.readouts = relationship(
     back_populates="dobjects",
     secondary=DObjectReadout.__table__,
 )
+DObject.__sqlmodel_relationships__["readouts"] = None
 
 
 class Experiment(SQLModel, table=True):  # type: ignore
@@ -137,6 +139,7 @@ class Experiment(SQLModel, table=True):  # type: ignore
 DObject.experiments = relationship(
     Experiment, back_populates="dobjects", secondary=DObjectExperiment.__table__
 )
+DObject.__sqlmodel_relationships__["experiments"] = None
 
 
 class ExperimentType(SQLModel, table=True):  # type: ignore
