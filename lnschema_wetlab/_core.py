@@ -1,5 +1,5 @@
 from datetime import datetime as datetime
-from typing import Optional  # noqa
+from typing import Optional
 
 from lnschema_bionty import CellType, Disease, Species, Tissue
 from lnschema_core import DObject, Project
@@ -10,7 +10,7 @@ from sqlalchemy.orm import relationship
 from sqlmodel import Field, Relationship
 
 from . import _name as schema_name
-from ._link import (  # noqa
+from ._link import (
     BiosampleTechsample,
     DObjectBiosample,
     DObjectExperiment,
