@@ -2,7 +2,7 @@ from datetime import datetime as datetime
 from typing import Optional  # noqa
 
 from lnschema_bionty import CellType, Disease, Species, Tissue
-from lnschema_core import DObject
+from lnschema_core import DObject, Project
 from lnschema_core._timestamps import CreatedAt, UpdatedAt
 from lnschema_core._users import CreatedBy
 from lnschema_core.dev.sqlmodel import schema_sqlmodel
@@ -28,6 +28,7 @@ class Treatment(SQLModel, table=True):  # type: ignore
     id: str = Field(default_factory=idg.treatment, primary_key=True)
     external_id: str = Field(default=None, unique=True, index=True)
     name: str = Field(default=None, index=True)
+    created_by: str = CreatedBy
     created_at: datetime = CreatedAt
 
 
@@ -58,6 +59,7 @@ class Biosample(SQLModel, table=True):  # type: ignore
         default=None, foreign_key="wetlab.treatment.id", index=True
     )
     treatment: Treatment = Relationship()
+    created_by: str = CreatedBy
     created_at: datetime = CreatedAt
     updated_at: Optional[datetime] = UpdatedAt
     dobjects: DObject = Relationship(
@@ -81,6 +83,7 @@ class Techsample(SQLModel, table=True):  # type: ignore
     batch: Optional[str] = None
     filepath_r1: Optional[str] = None
     filepath_r2: Optional[str] = None
+    created_by: str = CreatedBy
     created_at: datetime = CreatedAt
     updated_at: Optional[datetime] = UpdatedAt
     biosamples: Biosample = Relationship(
@@ -103,6 +106,7 @@ class Readout(SQLModel, table=True):  # type: ignore
     molecule: Optional[str] = None
     instrument: Optional[str] = None
     measurement: Optional[str] = None
+    created_by: str = CreatedBy
     created_at: datetime = CreatedAt
     dobjects: DObject = Relationship(
         back_populates="readouts",
@@ -134,12 +138,21 @@ class Experiment(SQLModel, table=True):  # type: ignore
         back_populates="experiments",
         sa_relationship_kwargs=dict(secondary=DObjectExperiment.__table__),
     )
+    projects: Project = Relationship(
+        back_populates="experiments",
+        sa_relationship_kwargs=dict(secondary=ProjectExperiment.__table__),
+    )
 
 
 DObject.experiments = relationship(
     Experiment, back_populates="dobjects", secondary=DObjectExperiment.__table__
 )
 DObject.__sqlmodel_relationships__["experiments"] = None
+
+Project.experiments = relationship(
+    Experiment, back_populates="projects", secondary=ProjectExperiment.__table__
+)
+Project.__sqlmodel_relationships__["experiments"] = None
 
 
 class ExperimentType(SQLModel, table=True):  # type: ignore
@@ -150,4 +163,5 @@ class ExperimentType(SQLModel, table=True):  # type: ignore
     id: str = Field(default_factory=idg.experiment_type, primary_key=True)
     name: str = Field(default=None, index=True)
     efo_id: str = Field(default=None, unique=True)
+    created_by: str = CreatedBy
     created_at: datetime = CreatedAt
