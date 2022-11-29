@@ -2,7 +2,7 @@ from datetime import datetime as datetime
 from typing import Optional
 
 from lnschema_bionty import CellType, Disease, Species, Tissue
-from lnschema_core import DObject, Project
+from lnschema_core import DObject, Project  # noqa
 from lnschema_core._timestamps import CreatedAt, UpdatedAt
 from lnschema_core._users import CreatedBy
 from lnschema_core.dev.sqlmodel import schema_sqlmodel
@@ -10,7 +10,7 @@ from sqlalchemy.orm import relationship
 from sqlmodel import Field, Relationship
 
 from . import _name as schema_name
-from ._link import (
+from ._link import (  # noqa
     BiosampleTechsample,
     DObjectBiosample,
     DObjectExperiment,
@@ -138,10 +138,10 @@ class Experiment(SQLModel, table=True):  # type: ignore
         back_populates="experiments",
         sa_relationship_kwargs=dict(secondary=DObjectExperiment.__table__),
     )
-    projects: Project = Relationship(
-        back_populates="experiments",
-        sa_relationship_kwargs=dict(secondary=ProjectExperiment.__table__),
-    )
+    # projects: Project = Relationship(
+    #     back_populates="experiments",
+    #     sa_relationship_kwargs=dict(secondary=ProjectExperiment.__table__),
+    # )
 
 
 DObject.experiments = relationship(
@@ -149,10 +149,10 @@ DObject.experiments = relationship(
 )
 DObject.__sqlmodel_relationships__["experiments"] = None
 
-Project.experiments = relationship(
-    Experiment, back_populates="projects", secondary=ProjectExperiment.__table__
-)
-Project.__sqlmodel_relationships__["experiments"] = None
+# Project.experiments = relationship(
+#     Experiment, back_populates="projects", secondary=ProjectExperiment.__table__
+# )
+# Project.__sqlmodel_relationships__["experiments"] = None
 
 
 class ExperimentType(SQLModel, table=True):  # type: ignore
