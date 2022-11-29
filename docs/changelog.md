@@ -3,7 +3,7 @@
 <!-- prettier-ignore -->
 Name | PR | Developer | Date | Version
 --- | --- | --- | --- | ---
-🔥 Comment out ProjectExperiment | [43](https://github.com/laminlabs/lnschema-wetlab/pull/43) | [sunnyosun](https://github.com/sunnyosun) | 2022-11-29 |
+🔥 Comment out ProjectExperiment | [43](https://github.com/laminlabs/lnschema-wetlab/pull/43) | [sunnyosun](https://github.com/sunnyosun) | 2022-11-29 | 0.10.4
 ✨ Added created_by to all tables | [42](https://github.com/laminlabs/lnschema-wetlab/pull/42) | [sunnyosun](https://github.com/sunnyosun) | 2022-11-29 | 0.10.3
 🩹 Add to `__sqlmodel_relationships__` | [41](https://github.com/laminlabs/lnschema-wetlab/pull/41) | [sunnyosun](https://github.com/sunnyosun) | 2022-11-28 | 0.10.2
 ✨ Add relationship of bio and tech samples | [40](https://github.com/laminlabs/lnschema-wetlab/pull/40) | [sunnyosun](https://github.com/sunnyosun) | 2022-11-25 | 0.10.1
