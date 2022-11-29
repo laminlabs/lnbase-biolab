@@ -9,8 +9,8 @@ readme = "README.md"
 dynamic = ["version", "description"]
 dependencies = [
     "nbproject",
-    "sqlmodel>=0.0.8",
-    "lnschema_core>=0.18.0",
+    "sqlmodel",
+    "lnschema_core",
     "lnschema_bionty",
 ]
 
@@ -26,6 +26,7 @@ test = [
     "pytest>=6.0",
     "pytest-cov",
     "cloudpathlib",
+    "lndb_setup",
 ]
 
 [tool.black]
