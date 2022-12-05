@@ -3,6 +3,7 @@
 <!-- prettier-ignore -->
 Name | PR | Developer | Date | Version
 --- | --- | --- | --- | ---
+🐛 Add back regular relationships | [46](https://github.com/laminlabs/lnschema-wetlab/pull/46) | [falexwolf](https://github.com/falexwolf) | 2022-12-05 |
 ✨ `BiosampleBase` | [44](https://github.com/laminlabs/lnschema-wetlab/pull/44) | [sunnyosun](https://github.com/sunnyosun) | 2022-12-05 | 0.11.0
 🔥 Comment out `ProjectExperiment` | [43](https://github.com/laminlabs/lnschema-wetlab/pull/43) | [sunnyosun](https://github.com/sunnyosun) | 2022-11-29 | 0.10.4
 ✨ Added `created_by` to all tables | [42](https://github.com/laminlabs/lnschema-wetlab/pull/42) | [sunnyosun](https://github.com/sunnyosun) | 2022-11-29 | 0.10.3
