@@ -32,9 +32,7 @@ class Treatment(SQLModel, table=True):  # type: ignore
     created_at: datetime = CreatedAt
 
 
-class Biosample(SQLModel, table=True):  # type: ignore
-    """Biological samples that are registered in experiments."""
-
+class BiosampleBase(SQLModel):  # type: ignore
     id: str = Field(default_factory=idg.biosample, primary_key=True)
     external_id: Optional[str] = Field(default=None, index=True, unique=True)
     name: Optional[str] = Field(default=None, index=True)
@@ -62,6 +60,11 @@ class Biosample(SQLModel, table=True):  # type: ignore
     created_by: str = CreatedBy
     created_at: datetime = CreatedAt
     updated_at: Optional[datetime] = UpdatedAt
+
+
+class Biosample(BiosampleBase, table=True):  # type: ignore
+    """Biological samples that are registered in experiments."""
+
     dobjects: DObject = Relationship(
         back_populates="biosamples",
         sa_relationship_kwargs=dict(secondary=DObjectBiosample.__table__),
