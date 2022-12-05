@@ -1,6 +1,7 @@
 from datetime import datetime as datetime
 from typing import Optional
 
+from lndb_setup import settings
 from lnschema_bionty import CellType, Disease, Species, Tissue
 from lnschema_core import DObject, Project  # noqa
 from lnschema_core._timestamps import CreatedAt, UpdatedAt
@@ -77,22 +78,7 @@ class BiosampleBase(SQLModel):  # type: ignore
         return relationship("Treatment")
 
 
-class Biosample(BiosampleBase, table=True):  # type: ignore
-    """Biological samples that are registered in experiments."""
-
-    dobjects: DObject = Relationship(
-        back_populates="biosamples",
-        sa_relationship_kwargs=dict(secondary=DObjectBiosample.__table__),
-    )
-
-
-DObject.biosamples = relationship(
-    Biosample, back_populates="dobjects", secondary=DObjectBiosample.__table__
-)
-DObject.__sqlmodel_relationships__["biosamples"] = None
-
-
-class Techsample(SQLModel, table=True):  # type: ignore
+class TechsampleBase(SQLModel):  # type: ignore
     """Tech samples that are generated due to instrument units."""
 
     id: str = Field(default_factory=idg.techsample, primary_key=True)
@@ -104,15 +90,36 @@ class Techsample(SQLModel, table=True):  # type: ignore
     created_by: str = CreatedBy
     created_at: datetime = CreatedAt
     updated_at: Optional[datetime] = UpdatedAt
-    biosamples: Biosample = Relationship(
-        back_populates="techsamples",
-        sa_relationship_kwargs=dict(secondary=BiosampleTechsample.__table__),
+
+
+if "wetlab" in settings.instance.schema:
+
+    class Biosample(BiosampleBase, table=True):  # type: ignore
+        """Biological samples that are registered in experiments."""
+
+        dobjects: DObject = Relationship(
+            back_populates="biosamples",
+            sa_relationship_kwargs=dict(secondary=DObjectBiosample.__table__),
+        )
+
+    DObject.biosamples = relationship(
+        Biosample, back_populates="dobjects", secondary=DObjectBiosample.__table__
+    )
+    DObject.__sqlmodel_relationships__["biosamples"] = None
+
+    class Techsample(TechsampleBase, table=True):  # type: ignore
+        biosamples: Biosample = Relationship(
+            back_populates="techsamples",
+            sa_relationship_kwargs=dict(secondary=BiosampleTechsample.__table__),
+        )
+
+    Biosample.techsamples = relationship(
+        Techsample, back_populates="biosamples", secondary=BiosampleTechsample.__table__
     )
 
-
-Biosample.techsamples = relationship(
-    Techsample, back_populates="biosamples", secondary=BiosampleTechsample.__table__
-)
+else:
+    Biosample = None  # type: ignore
+    Techsample = None  # type: ignore
 
 
 class Readout(SQLModel, table=True):  # type: ignore

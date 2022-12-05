@@ -1,3 +1,4 @@
+from lndb_setup import settings
 from lnschema_core.dev.sqlmodel import schema_sqlmodel
 from sqlmodel import Field
 
@@ -15,13 +16,27 @@ class ProjectExperiment(SQLModel, table=True):  # type: ignore
     experiment_id: str = Field(foreign_key="wetlab.experiment.id", primary_key=True)
 
 
-class BiosampleTechsample(SQLModel, table=True):  # type: ignore
-    """Links for `Biosample` and `Techsample`."""
+if "wetlab" in settings.instance.schema:
 
-    __tablename__ = f"{prefix}biosample_techsample"
+    class BiosampleTechsample(SQLModel, table=True):  # type: ignore
+        """Links for `Biosample` and `Techsample`."""
 
-    biosample_id: str = Field(foreign_key="wetlab.biosample.id", primary_key=True)
-    techsample_id: str = Field(foreign_key="wetlab.techsample.id", primary_key=True)
+        __tablename__ = f"{prefix}biosample_techsample"
+
+        biosample_id: str = Field(foreign_key="wetlab.biosample.id", primary_key=True)
+        techsample_id: str = Field(foreign_key="wetlab.techsample.id", primary_key=True)
+
+    class DObjectBiosample(SQLModel, table=True):  # type: ignore
+        """Links for `DObject` and `Biosample`."""
+
+        __tablename__ = f"{prefix}dobject_biosample"
+
+        dobject_id: str = Field(foreign_key="core.dobject.id", primary_key=True)
+        biosample_id: str = Field(foreign_key="wetlab.biosample.id", primary_key=True)
+
+else:
+    BiosampleTechsample = None  # type: ignore
+    DObjectBiosample = None  # type: ignore
 
 
 class DObjectExperiment(SQLModel, table=True):  # type: ignore
@@ -31,15 +46,6 @@ class DObjectExperiment(SQLModel, table=True):  # type: ignore
 
     dobject_id: str = Field(foreign_key="core.dobject.id", primary_key=True)
     experiment_id: str = Field(foreign_key="wetlab.experiment.id", primary_key=True)
-
-
-class DObjectBiosample(SQLModel, table=True):  # type: ignore
-    """Links for `DObject` and `Biosample`."""
-
-    __tablename__ = f"{prefix}dobject_biosample"
-
-    dobject_id: str = Field(foreign_key="core.dobject.id", primary_key=True)
-    biosample_id: str = Field(foreign_key="wetlab.biosample.id", primary_key=True)
 
 
 class DObjectReadout(SQLModel, table=True):  # type: ignore
