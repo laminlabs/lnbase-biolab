@@ -1,4 +1,3 @@
-import traceback
 from typing import Dict, List, Union
 
 import pandas as pd
@@ -19,7 +18,6 @@ def parse_and_insert_df(df: pd.DataFrame, target_table: str) -> Dict[str, Dict]:
         }
         added_entries["entries"] = {**added_entries["entries"], **df_entries["entries"]}
     except Exception as e:
-        traceback.print_exc()
         _delete_added_entries(added_entries)
         raise e
     finally:
