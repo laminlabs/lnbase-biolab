@@ -7,7 +7,7 @@ from lnschema_core import DObject, Project  # noqa
 from lnschema_core._timestamps import CreatedAt, UpdatedAt
 from lnschema_core._users import CreatedBy
 from lnschema_core.dev.sqlmodel import schema_sqlmodel
-from sqlalchemy.orm import relationship
+from sqlalchemy.orm import declared_attr, relationship
 from sqlmodel import Field, Relationship
 
 from . import _name as schema_name
@@ -57,6 +57,27 @@ class BiosampleBase(SQLModel):  # type: ignore
     created_at: datetime = CreatedAt
     updated_at: Optional[datetime] = UpdatedAt
 
+    # relationships
+    @declared_attr
+    def species(self) -> Optional[Species]:
+        return relationship("Species")
+
+    @declared_attr
+    def tissue(self) -> Optional[Tissue]:
+        return relationship("Tissue")
+
+    @declared_attr
+    def cell_type(self) -> Optional[CellType]:
+        return relationship("CellType")
+
+    @declared_attr
+    def disease(self) -> Optional[Disease]:
+        return relationship("Disease")
+
+    @declared_attr
+    def treatment(self) -> Optional[Treatment]:
+        return relationship("Treatment")
+
 
 class TechsampleBase(SQLModel):  # type: ignore
     """Tech samples that are generated due to instrument units."""
@@ -77,11 +98,6 @@ if "wetlab" in settings.instance.schema:
     class Biosample(BiosampleBase, table=True):  # type: ignore
         """Biological samples that are registered in experiments."""
 
-        species: Species = Relationship()
-        tissue: Tissue = Relationship()
-        cell_type: CellType = Relationship()
-        disease: Disease = Relationship()
-        treatment: Treatment = Relationship()
         dobjects: DObject = Relationship(
             back_populates="biosamples",
             sa_relationship_kwargs=dict(secondary=DObjectBiosample.__table__),
