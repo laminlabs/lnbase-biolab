@@ -29,7 +29,7 @@ Development tools:
 _schema_id = "vvhc"
 _name = "wetlab"
 _migration = "bfda12fc80a8"
-__version__ = "0.11.2"
+__version__ = "0.11.3"
 
 from . import dev, link
 from ._core import (  # noqa
