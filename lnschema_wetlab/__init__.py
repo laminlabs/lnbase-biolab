@@ -1,20 +1,30 @@
-"""Schema module for a generic wetlab (`vvhc`).
+"""Base classes for a wetlab schema (`vvhc`).
 
 Import the package::
 
    import lnschema_wetlab
 
-This is the complete API reference:
+Base classes:
 
 .. autosummary::
    :toctree: .
 
-   Biosample
-   Techsample
-   Readout
-   Treatment
+   ExperimentBase
+   ExperimentTypeBase
+   BiosampleBase
+   TechsampleBase
+   ReadoutBase
+
+Examples of derived classes, typically configured:
+
+.. autosummary::
+   :toctree: .
+
    Experiment
-   ExperimentType
+   ExperimentTypeBase
+   BiosampleBase
+   TechsampleBase
+   ReadoutBase
 
 Development tools:
 
@@ -34,9 +44,13 @@ __version__ = "0.11.5"
 from . import dev, link
 from ._core import (  # noqa
     Biosample,
+    BiosampleBase,
     Experiment,
+    ExperimentBase,
     ExperimentType,
+    ExperimentTypeBase,
     Readout,
+    ReadoutBase,
     Techsample,
-    Treatment,
+    TechsampleBase,
 )
