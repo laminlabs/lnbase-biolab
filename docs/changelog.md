@@ -3,7 +3,7 @@
 <!-- prettier-ignore -->
 Name | PR | Developer | Date | Version
 --- | --- | --- | --- | ---
-🎨 Inherit simple relationships | [47](https://github.com/laminlabs/lnschema-wetlab/pull/47) | [sunnyosun](https://github.com/sunnyosun) | 2022-12-06 |
+🎨 Inherit simple relationships | [47](https://github.com/laminlabs/lnschema-wetlab/pull/47) | [sunnyosun](https://github.com/sunnyosun) | 2022-12-06 | 0.11.2
 🐛 Add back regular relationships | [46](https://github.com/laminlabs/lnschema-wetlab/pull/46) | [falexwolf](https://github.com/falexwolf) | 2022-12-05 | 0.11.1
 ✨ `BiosampleBase` | [44](https://github.com/laminlabs/lnschema-wetlab/pull/44) | [sunnyosun](https://github.com/sunnyosun) | 2022-12-05 | 0.11.0
 🔥 Comment out `ProjectExperiment` | [43](https://github.com/laminlabs/lnschema-wetlab/pull/43) | [sunnyosun](https://github.com/sunnyosun) | 2022-11-29 | 0.10.4
