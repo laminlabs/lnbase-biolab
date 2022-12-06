@@ -3,6 +3,7 @@
 <!-- prettier-ignore -->
 Name | PR | Developer | Date | Version
 --- | --- | --- | --- | ---
+:adhesive_bandage: Fix sample submission printed feedback | [49](https://github.com/laminlabs/lnschema-wetlab/pull/49) | [bpenteado](https://github.com/bpenteado) | 2022-12-06 |
 ✨ Create sample submission support functions | [45](https://github.com/laminlabs/lnschema-wetlab/pull/45) | [bpenteado](https://github.com/bpenteado) | 2022-12-06 | 0.11.4
 🐛 Fix __sqlmodel_relationships__ | [48](https://github.com/laminlabs/lnschema-wetlab/pull/48) | [sunnyosun](https://github.com/sunnyosun) | 2022-12-06 | 0.11.3
 🎨 Inherit simple relationships | [47](https://github.com/laminlabs/lnschema-wetlab/pull/47) | [sunnyosun](https://github.com/sunnyosun) | 2022-12-06 | 0.11.2
