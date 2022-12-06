@@ -23,10 +23,7 @@ def parse_and_insert_df(df: pd.DataFrame, target_table: str) -> Dict[str, Dict]:
     finally:
         import lamindb as ln
 
-        print(ln.view(schema="core"))
-        print(ln.view(schema="bionty"))
-        print(ln.view(schema="wetlab"))
-        print(ln.view(schema="retro"))
+        ln.view()
     return added_entries
 
 
