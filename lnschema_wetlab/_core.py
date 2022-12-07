@@ -2,7 +2,7 @@ from datetime import datetime as datetime
 from typing import Optional
 
 from lndb_setup import settings
-from lnschema_bionty import CellType, Disease, Species, Tissue
+from lnschema_bionty import Species
 from lnschema_core import DObject, Project  # noqa
 from lnschema_core._timestamps import CreatedAt, UpdatedAt
 from lnschema_core._users import CreatedBy
@@ -20,11 +20,13 @@ class ExperimentBase(SQLModel):  # type: ignore
     """Experiments."""
 
     id: str = Field(default_factory=idg.experiment, primary_key=True)
-    external_id: str = Field(default=None, unique=True)
     name: str = Field(default=None, index=True)
+    external_id: str = Field(default=None, unique=True)
     date: datetime = Field(default=None, index=True)
+    """Date on which the experiment is performed."""
     created_by: str = CreatedBy
     created_at: datetime = CreatedAt
+    updated_at: Optional[datetime] = UpdatedAt
 
 
 class ExperimentTypeBase(SQLModel):  # type: ignore
@@ -45,20 +47,10 @@ class BiosampleBase(SQLModel):  # type: ignore
     """Biosamples: the fundamental observational unit."""
 
     id: str = Field(default_factory=idg.biosample, primary_key=True)
-    external_id: Optional[str] = Field(default=None, index=True, unique=True)
     name: Optional[str] = Field(default=None, index=True)
-    batch: Optional[str] = None
+    external_id: Optional[str] = Field(default=None, index=True, unique=True)
     species_id: Optional[str] = Field(
         default=None, foreign_key="bionty.species.id", index=True
-    )
-    tissue_id: Optional[str] = Field(
-        default=None, foreign_key="bionty.tissue.id", index=True
-    )
-    cell_type_id: Optional[str] = Field(
-        default=None, foreign_key="bionty.cell_type.id", index=True
-    )
-    disease_id: Optional[str] = Field(
-        default=None, foreign_key="bionty.disease.id", index=True
     )
     created_by: str = CreatedBy
     created_at: datetime = CreatedAt
@@ -69,25 +61,13 @@ class BiosampleBase(SQLModel):  # type: ignore
     def species(self) -> Optional[Species]:
         return relationship("Species")
 
-    @declared_attr
-    def tissue(self) -> Optional[Tissue]:
-        return relationship("Tissue")
-
-    @declared_attr
-    def cell_type(self) -> Optional[CellType]:
-        return relationship("CellType")
-
-    @declared_attr
-    def disease(self) -> Optional[Disease]:
-        return relationship("Disease")
-
 
 class TechsampleBase(SQLModel):  # type: ignore
     """Tech samples that are generated due to instrument units."""
 
     id: str = Field(default_factory=idg.techsample, primary_key=True)
-    external_id: Optional[str] = Field(default=None, index=True, unique=True)
     name: Optional[str] = Field(default=None, index=True)
+    external_id: Optional[str] = Field(default=None, index=True, unique=True)
     batch: Optional[str] = None
     filepath_r1: Optional[str] = None
     filepath_r2: Optional[str] = None
