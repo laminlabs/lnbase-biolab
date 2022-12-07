@@ -11,12 +11,9 @@ def parse_and_insert_df(df: pd.DataFrame, target_table: str) -> Dict[str, Dict]:
         mapper = map_cols_to_tables(df, target_table)
         added_entries = _add_columns(df, mapper)
         df = _populate_cols_with_pks(df, added_entries)
+        print(df)
         df_entries = _add_dfs(df, target_table)
-        added_entries["mappings"] = {
-            **added_entries["mappings"],
-            **df_entries["mappings"],
-        }
-        added_entries["entries"] = {**added_entries["entries"], **df_entries["entries"]}
+        added_entries = _update_added_entries(added_entries, df_entries)
     except Exception as e:
         _delete_added_entries(added_entries)
         raise e
@@ -71,7 +68,13 @@ def add_from_df(
     # Add df rows to db
     entries_to_add = [table(**row) for row in common_df_as_records]
     entries = ln.add(entries_to_add)
-    added_entries["entries"][str(table.__table__.name)] = entries
+
+    # format return mappings and entries
+    table_name = str(table.__table__.name)
+    for field in common_fields:
+        df_col = match_col_from_df(df, field)
+        added_entries["mappings"][df_col] = (table_name, field)
+    added_entries["entries"][table_name] = entries
 
     return added_entries
 
