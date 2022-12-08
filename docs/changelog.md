@@ -3,9 +3,9 @@
 <!-- prettier-ignore -->
 Name | PR | Developer | Date | Version
 --- | --- | --- | --- | ---
-🐛 Fix type annotations | [51](https://github.com/laminlabs/lnschema-wetlab/pull/51) | [falexwolf](https://github.com/falexwolf) | 2022-12-08 |
+🐛 Fix type annotations | [51](https://github.com/laminlabs/lnschema-wetlab/pull/51) | [falexwolf](https://github.com/falexwolf) | 2022-12-08 | 0.12.1
 🎨 Refactor, turn all classes into base classes, drop `Treatment` from this module | [50](https://github.com/laminlabs/lnschema-wetlab/pull/50) | [falexwolf](https://github.com/falexwolf) | 2022-12-07 | 0.12.0
-:adhesive_bandage: Fix sample submission printed feedback | [49](https://github.com/laminlabs/lnschema-wetlab/pull/49) | [bpenteado](https://github.com/bpenteado) | 2022-12-06 | 0.11.5
+🩹 Fix sample submission printed feedback | [49](https://github.com/laminlabs/lnschema-wetlab/pull/49) | [bpenteado](https://github.com/bpenteado) | 2022-12-06 | 0.11.5
 ✨ Create sample submission support functions | [45](https://github.com/laminlabs/lnschema-wetlab/pull/45) | [bpenteado](https://github.com/bpenteado) | 2022-12-06 | 0.11.4
 🐛 Fix __sqlmodel_relationships__ | [48](https://github.com/laminlabs/lnschema-wetlab/pull/48) | [sunnyosun](https://github.com/sunnyosun) | 2022-12-06 | 0.11.3
 🎨 Inherit simple relationships | [47](https://github.com/laminlabs/lnschema-wetlab/pull/47) | [sunnyosun](https://github.com/sunnyosun) | 2022-12-06 | 0.11.2
