@@ -1,5 +1,6 @@
 from typing import Optional
 
+from lnschema_bionty import CellType, Disease, Tissue
 from lnschema_core import DObject
 from lnschema_core.dev.sqlmodel import add_relationship_keys, schema_sqlmodel
 from sqlalchemy.orm import relationship
@@ -54,15 +55,15 @@ class Biosample(BiosampleBase, table=True):  # type: ignore
     tissue_id: Optional[str] = Field(
         default=None, foreign_key="bionty.tissue.id", index=True
     )
-    tissue = Relationship()
+    tissue: Tissue = Relationship()
     cell_type_id: Optional[str] = Field(
         default=None, foreign_key="bionty.cell_type.id", index=True
     )
-    cell_type = Relationship()
+    cell_type: CellType = Relationship()
     disease_id: Optional[str] = Field(
         default=None, foreign_key="bionty.disease.id", index=True
     )
-    disease = Relationship()
+    disease: Disease = Relationship()
     dobjects: DObject = Relationship(
         back_populates="biosamples",
         sa_relationship_kwargs=dict(secondary=DObjectBiosample.__table__),
