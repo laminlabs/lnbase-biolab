@@ -8,22 +8,18 @@ import sqlmodel as sqm
 def parse_and_insert_df(df: pd.DataFrame, target_table: str) -> Dict[str, Dict]:
     added_entries = {"mappings": {}, "entries": {}}  # type: ignore
     try:
+        # insert columns into relevant tables
         mapper = map_cols_to_tables(df, target_table)
         added_entries = _add_columns(df, mapper)
         df = _populate_cols_with_pks(df, added_entries)
-        df_entries = _add_dfs(df, target_table)
-        added_entries["mappings"] = {
-            **added_entries["mappings"],
-            **df_entries["mappings"],
-        }
-        added_entries["entries"] = {**added_entries["entries"], **df_entries["entries"]}
+        # insert dataframe into sample table
+        sample_sqa = get_sample_table(target_table)
+        sample_sqm = get_sqm_tables(sample_sqa.name)
+        df_entries = add_from_df(df, sample_sqm)
+        added_entries = _update_added_entries(added_entries, df_entries)
     except Exception as e:
         _delete_added_entries(added_entries)
         raise e
-    finally:
-        import lamindb as ln
-
-        ln.view()
     return added_entries
 
 
@@ -34,6 +30,8 @@ def add_from_column(
 
     This only writes one single column of each entry into the database.
     """
+    import lamindb as ln
+
     entries = pd_series.unique().tolist()
     table_name = str(table.__table__.name)
     added_entries = {"mappings": {}, "entries": {}}  # type: ignore
@@ -41,7 +39,8 @@ def add_from_column(
     added_entries["entries"][table_name] = []
     for value in entries:
         try:
-            db_entry = _add_or_fetch(table, table_column, value)
+            entry_data = {table_column: value}
+            db_entry = ln.add(table, **entry_data)
             added_entries["entries"][table_name] += [db_entry]
         except Exception as e:
             _delete_added_entries(added_entries)
@@ -62,16 +61,32 @@ def add_from_df(
     if column_map:
         df_temp = df_temp.rename(columns=column_map)
     df_temp = df_header_to_snake(df_temp)
+    df_temp = df_temp.fillna("None")
 
     # Get the intersection between df and table columns
-    df_temp = _rename_fk_of_target_pk(df_temp, table)
     common_fields = set(table.__fields__.keys()).intersection(df_temp.columns)
     common_df_as_records = df_temp[list(common_fields)].to_dict(orient="records")
 
     # Add df rows to db
-    entries_to_add = [table(**row) for row in common_df_as_records]
-    entries = ln.add(entries_to_add)
-    added_entries["entries"][str(table.__table__.name)] = entries
+    entries = []
+    for row in common_df_as_records:
+        try:
+            entries += [ln.add(table, **row)]
+        except Exception as e:
+            _delete_added_entries(added_entries)
+            raise e
+
+    # format return mappings and entries
+    table_name = str(table.__table__.name)
+    for field in common_fields:
+        try:
+            df_col = match_col_from_df(df, field)
+            added_entries["mappings"][df_col] = (table_name, field)
+        except KeyError:
+            # ignore KeyError for intermediate field (pks with fk constraints)
+            if field == "id":
+                pass
+    added_entries["entries"][table_name] = entries
 
     return added_entries
 
@@ -90,6 +105,18 @@ def df_header_to_snake(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 
+def get_sample_table(sample: str) -> sql.schema.Table:
+    """Get a single sqlalchemy table for the sample of interest."""
+    tables = get_sql_tables(sample)
+    if not tables:
+        raise ValueError(f"Table {sample} does not exist.")
+    elif len(tables) == 1:
+        return tables[0]
+    for table in tables:
+        if "wetlab" not in table.name:
+            return table
+
+
 def get_sql_tables(table_name: str) -> List[sql.schema.Table]:
     """Get LaminDB sqlalchemy tables whose name perfectly match the input."""
     import lamindb as ln
@@ -99,13 +126,9 @@ def get_sql_tables(table_name: str) -> List[sql.schema.Table]:
     return matched
 
 
-def get_sql_fk_tables(table_name: str) -> List[sql.schema.Table]:
+def get_sql_fk_tables(table: sql.schema.Table) -> List[sql.schema.Table]:
     """Get all tables associated with the input table (by fk constraint)."""
-    tables = get_sql_tables(table_name)
-    fk_tables = []
-    for table in tables:
-        fk_tables += [fk.column.table for fk in table.foreign_keys]
-    return fk_tables
+    return [fk.column.table for fk in table.foreign_keys]
 
 
 def get_sqm_tables(name: str) -> sqm.main.SQLModelMetaclass:
@@ -148,7 +171,8 @@ def map_cols_to_tables(
     """Map df columns to LaminDB tables associated with columns from input table."""
     mapping = {}
     temp_df = df_header_to_snake(df)
-    sample_fk_tables = get_sql_fk_tables(target_table)
+    sample_table = get_sample_table(target_table)
+    sample_fk_tables = get_sql_fk_tables(sample_table)
     for column in temp_df.columns:
         for table in sample_fk_tables:
             if column in table.name:
@@ -193,38 +217,6 @@ def _add_columns(df: pd.DataFrame, column_mapper: dict) -> Dict[str, Dict]:
     return added_entries
 
 
-def _add_dfs(df: pd.DataFrame, target_table: str) -> Dict[str, Dict]:
-    """Add dataframe into LaminDB tables whose name match the input name."""
-    df = df.copy()
-    added_entries = {"mappings": {}, "entries": {}}  # type: ignore
-    try:
-        target_tables = get_sql_tables(target_table)
-        for table in target_tables:
-            sqm_table = get_sqm_tables(table.name)
-            entries = add_from_df(df, sqm_table)
-            added_entries = _update_added_entries(added_entries, entries)
-            df[(table.name.lower() + ".id")] = [
-                entry.id
-                for table_entry in entries["entries"].values()
-                for entry in table_entry
-            ]
-    except Exception as e:
-        _delete_added_entries(added_entries)
-        raise Exception("Failed at add_dfs: ", e)
-    return added_entries
-
-
-def _add_or_fetch(target_table: sqm.SQLModel, table_column: str, value):
-    import lamindb as ln
-
-    query_filter = {table_column: value}
-    existing_entry = ln.select(target_table, **query_filter).one_or_none()
-    if existing_entry is not None:
-        return existing_entry
-    else:
-        return ln.add(target_table(**{table_column: value}))
-
-
 def _delete_added_entries(added_entries: dict):
     import lamindb as ln
 
@@ -240,19 +232,12 @@ def _populate_cols_with_pks(df, col_entries: dict) -> pd.DataFrame:
         table, field = mapping
         entries = col_entries["entries"][table]
         id_mapper = {getattr(entry, field): entry.id for entry in entries}
+        # handle possible SQLModel casting
+        for value in df[col].unique().tolist():
+            if str(value) in id_mapper.keys():
+                id_mapper[value] = id_mapper[str(value)]
         df[col] = df[col].map(id_mapper)
         df = df.rename(columns={col: f"{col} ID"})
-    return df
-
-
-def _rename_fk_of_target_pk(
-    df: pd.DataFrame, target_table: sqm.SQLModel
-) -> pd.DataFrame:
-    df = df.copy()
-    pk_fk = get_pk_fk(target_table)
-    for col in df.columns:
-        if col == pk_fk:
-            df = df.rename(columns={col: "id"})
     return df
 
 

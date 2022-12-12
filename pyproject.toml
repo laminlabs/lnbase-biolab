@@ -27,7 +27,8 @@ test = [
     "pytest>=6.0",
     "pytest-cov",
     "cloudpathlib",
-    "lndb_setup",
+    "lamindb",
+    "lndb_setup"
 ]
 
 [tool.black]
