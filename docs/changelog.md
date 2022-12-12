@@ -3,6 +3,7 @@
 <!-- prettier-ignore -->
 Name | PR | Developer | Date | Version
 --- | --- | --- | --- | ---
+:memo: Create sample submission documentation and testing | [53](https://github.com/laminlabs/lnschema-wetlab/pull/53) | [bpenteado](https://github.com/bpenteado) | 2022-12-12 |
 🐛 Fix type annotations | [51](https://github.com/laminlabs/lnschema-wetlab/pull/51) | [falexwolf](https://github.com/falexwolf) | 2022-12-08 | 0.12.1
 🎨 Refactor, turn all classes into base classes, drop `Treatment` from this module | [50](https://github.com/laminlabs/lnschema-wetlab/pull/50) | [falexwolf](https://github.com/falexwolf) | 2022-12-07 | 0.12.0
 🩹 Fix sample submission printed feedback | [49](https://github.com/laminlabs/lnschema-wetlab/pull/49) | [bpenteado](https://github.com/bpenteado) | 2022-12-06 | 0.11.5
