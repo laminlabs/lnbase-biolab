@@ -11,16 +11,11 @@ def parse_and_insert_df(df: pd.DataFrame, target_table: str) -> Dict[str, Dict]:
         mapper = map_cols_to_tables(df, target_table)
         added_entries = _add_columns(df, mapper)
         df = _populate_cols_with_pks(df, added_entries)
-        print(df)
         df_entries = _add_dfs(df, target_table)
         added_entries = _update_added_entries(added_entries, df_entries)
     except Exception as e:
         _delete_added_entries(added_entries)
         raise e
-    finally:
-        import lamindb as ln
-
-        ln.view()
     return added_entries
 
 
@@ -31,6 +26,8 @@ def add_from_column(
 
     This only writes one single column of each entry into the database.
     """
+    import lamindb as ln
+
     entries = pd_series.unique().tolist()
     table_name = str(table.__table__.name)
     added_entries = {"mappings": {}, "entries": {}}  # type: ignore
@@ -38,7 +35,9 @@ def add_from_column(
     added_entries["entries"][table_name] = []
     for value in entries:
         try:
-            db_entry = _add_or_fetch(table, table_column, value)
+            # db_entry = _add_or_fetch(table, table_column, value)
+            entry_data = {table_column: value}
+            db_entry = ln.add(table, **entry_data)
             added_entries["entries"][table_name] += [db_entry]
         except Exception as e:
             _delete_added_entries(added_entries)
@@ -66,14 +65,28 @@ def add_from_df(
     common_df_as_records = df_temp[list(common_fields)].to_dict(orient="records")
 
     # Add df rows to db
-    entries_to_add = [table(**row) for row in common_df_as_records]
-    entries = ln.add(entries_to_add)
+    # entries_to_add = [table(**row) for row in common_df_as_records]
+    # entries = ln.add(entries_to_add)
+    entries = []
+    print(common_df_as_records)
+    for row in common_df_as_records:
+        try:
+            entries += [ln.add(table, **row)]
+        except Exception as e:
+            print(row)
+            _delete_added_entries(added_entries)
+            raise e
 
     # format return mappings and entries
     table_name = str(table.__table__.name)
     for field in common_fields:
-        df_col = match_col_from_df(df, field)
-        added_entries["mappings"][df_col] = (table_name, field)
+        try:
+            df_col = match_col_from_df(df, field)
+            added_entries["mappings"][df_col] = (table_name, field)
+        except KeyError:
+            # ignore KeyError for intermediate field (pks with fk constraints)
+            if field == "id":
+                pass
     added_entries["entries"][table_name] = entries
 
     return added_entries
@@ -99,12 +112,15 @@ def get_sql_tables(table_name: str) -> List[sql.schema.Table]:
 
     tables = ln.schema._core.get_db_metadata().sorted_tables
     matched = [tab for tab in tables if tab.name.split(".")[-1] == table_name]
+
     return matched
 
 
 def get_sql_fk_tables(table_name: str) -> List[sql.schema.Table]:
     """Get all tables associated with the input table (by fk constraint)."""
     tables = get_sql_tables(table_name)
+    if not tables:
+        raise ValueError(f"Table {table_name} does not exist.")
     fk_tables = []
     for table in tables:
         fk_tables += [fk.column.table for fk in table.foreign_keys]
@@ -204,6 +220,7 @@ def _add_dfs(df: pd.DataFrame, target_table: str) -> Dict[str, Dict]:
         target_tables = get_sql_tables(target_table)
         for table in target_tables:
             sqm_table = get_sqm_tables(table.name)
+            print(df)
             entries = add_from_df(df, sqm_table)
             added_entries = _update_added_entries(added_entries, entries)
             df[(table.name.lower() + ".id")] = [
@@ -243,6 +260,10 @@ def _populate_cols_with_pks(df, col_entries: dict) -> pd.DataFrame:
         table, field = mapping
         entries = col_entries["entries"][table]
         id_mapper = {getattr(entry, field): entry.id for entry in entries}
+        # handle possible SQLModel casting
+        for value in df[col].unique().tolist():
+            if str(value) in id_mapper.keys():
+                id_mapper[value] = id_mapper[str(value)]
         df[col] = df[col].map(id_mapper)
         df = df.rename(columns={col: f"{col} ID"})
     return df
