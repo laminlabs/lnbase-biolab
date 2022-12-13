@@ -141,7 +141,7 @@ def get_sqm_tables(name: str) -> sqm.main.SQLModelMetaclass:
     module = reduce(getattr, name_components[:-1], ln.schema)
     members = getmembers(module, isclass)
     for member in members:
-        if name_components[-1] == member[0].lower():
+        if name_components[-1] == _camel_to_snake(member[0]):
             return member[1]
 
 
@@ -215,6 +215,12 @@ def _add_columns(df: pd.DataFrame, column_mapper: dict) -> Dict[str, Dict]:
         _delete_added_entries(added_entries)
         raise Exception("Failed at add_columns: ", e)
     return added_entries
+
+
+def _camel_to_snake(string: str) -> str:
+    import re
+
+    return re.sub(r"(?<!^)(?=[A-Z])", "_", string).lower()
 
 
 def _delete_added_entries(added_entries: dict):
