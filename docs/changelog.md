@@ -3,7 +3,7 @@
 <!-- prettier-ignore -->
 Name | PR | Developer | Date | Version
 --- | --- | --- | --- | ---
-:memo: Prettify and exemplify sample submission documentation | [54](https://github.com/laminlabs/lnschema-wetlab/pull/54) | [bpenteado](https://github.com/bpenteado) | 2022-12-13 |
+:memo: Prettify and exemplify sample submission documentation | [54](https://github.com/laminlabs/lnschema-wetlab/pull/54) | [bpenteado](https://github.com/bpenteado) | 2022-12-13 | 0.12.2
 🎨 Use prefix instead of wetlab in the link tables | [52](https://github.com/laminlabs/lnschema-wetlab/pull/52) | [sunnyosun](https://github.com/sunnyosun) | 2022-12-13 |
 :memo: Create sample submission documentation and testing | [53](https://github.com/laminlabs/lnschema-wetlab/pull/53) | [bpenteado](https://github.com/bpenteado) | 2022-12-12 |
 🐛 Fix type annotations | [51](https://github.com/laminlabs/lnschema-wetlab/pull/51) | [falexwolf](https://github.com/falexwolf) | 2022-12-08 | 0.12.1
