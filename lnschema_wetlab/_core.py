@@ -21,7 +21,6 @@ class ExperimentBase(SQLModel):  # type: ignore
 
     id: str = Field(default_factory=idg.experiment, primary_key=True)
     name: str = Field(default=None, index=True)
-    external_id: str = Field(default=None, unique=True)
     date: datetime = Field(default=None, index=True)
     """Date on which the experiment is performed."""
     created_by: str = CreatedBy
@@ -48,7 +47,6 @@ class BiosampleBase(SQLModel):  # type: ignore
 
     id: str = Field(default_factory=idg.biosample, primary_key=True)
     name: Optional[str] = Field(default=None, index=True)
-    external_id: Optional[str] = Field(default=None, index=True, unique=True)
     species_id: Optional[str] = Field(
         default=None, foreign_key="bionty.species.id", index=True
     )
@@ -67,7 +65,6 @@ class TechsampleBase(SQLModel):  # type: ignore
 
     id: str = Field(default_factory=idg.techsample, primary_key=True)
     name: Optional[str] = Field(default=None, index=True)
-    external_id: Optional[str] = Field(default=None, index=True, unique=True)
     batch: Optional[str] = None
     filepath_r1: Optional[str] = None
     filepath_r2: Optional[str] = None
