@@ -3,10 +3,10 @@
 <!-- prettier-ignore -->
 Name | PR | Developer | Date | Version
 --- | --- | --- | --- | ---
-🚚 Remove `external_id` | [55](https://github.com/laminlabs/lnschema-wetlab/pull/55) | [falexwolf](https://github.com/falexwolf) | 2022-12-15 |
-:memo: Prettify and exemplify sample submission documentation | [54](https://github.com/laminlabs/lnschema-wetlab/pull/54) | [bpenteado](https://github.com/bpenteado) | 2022-12-13 | 0.12.2
+🚚 Remove `external_id` | [55](https://github.com/laminlabs/lnschema-wetlab/pull/55) | [falexwolf](https://github.com/falexwolf) | 2022-12-15 | 0.13.0
+📝 Prettify and exemplify sample submission documentation | [54](https://github.com/laminlabs/lnschema-wetlab/pull/54) | [bpenteado](https://github.com/bpenteado) | 2022-12-13 | 0.12.2
 🎨 Use prefix instead of wetlab in the link tables | [52](https://github.com/laminlabs/lnschema-wetlab/pull/52) | [sunnyosun](https://github.com/sunnyosun) | 2022-12-13 |
-:memo: Create sample submission documentation and testing | [53](https://github.com/laminlabs/lnschema-wetlab/pull/53) | [bpenteado](https://github.com/bpenteado) | 2022-12-12 |
+📝 Create sample submission documentation and testing | [53](https://github.com/laminlabs/lnschema-wetlab/pull/53) | [bpenteado](https://github.com/bpenteado) | 2022-12-12 |
 🐛 Fix type annotations | [51](https://github.com/laminlabs/lnschema-wetlab/pull/51) | [falexwolf](https://github.com/falexwolf) | 2022-12-08 | 0.12.1
 🎨 Refactor, turn all classes into base classes, drop `Treatment` from this module | [50](https://github.com/laminlabs/lnschema-wetlab/pull/50) | [falexwolf](https://github.com/falexwolf) | 2022-12-07 | 0.12.0
 🩹 Fix sample submission printed feedback | [49](https://github.com/laminlabs/lnschema-wetlab/pull/49) | [bpenteado](https://github.com/bpenteado) | 2022-12-06 | 0.11.5
