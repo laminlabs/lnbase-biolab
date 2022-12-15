@@ -3,6 +3,7 @@
 <!-- prettier-ignore -->
 Name | PR | Developer | Date | Version
 --- | --- | --- | --- | ---
+🚚 Remove `external_id` | [55](https://github.com/laminlabs/lnschema-wetlab/pull/55) | [falexwolf](https://github.com/falexwolf) | 2022-12-15 |
 :memo: Prettify and exemplify sample submission documentation | [54](https://github.com/laminlabs/lnschema-wetlab/pull/54) | [bpenteado](https://github.com/bpenteado) | 2022-12-13 | 0.12.2
 🎨 Use prefix instead of wetlab in the link tables | [52](https://github.com/laminlabs/lnschema-wetlab/pull/52) | [sunnyosun](https://github.com/sunnyosun) | 2022-12-13 |
 :memo: Create sample submission documentation and testing | [53](https://github.com/laminlabs/lnschema-wetlab/pull/53) | [bpenteado](https://github.com/bpenteado) | 2022-12-12 |
