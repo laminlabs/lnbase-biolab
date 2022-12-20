@@ -7,20 +7,19 @@ def biosample():
     sample = pd.DataFrame(
         {
             "Name": [
-                "hc_dexameth",
-                "cv_hydrocort_1",
-                "cv_hydrocort_2",
-                "hc_predniso",
-                "hc_triamcino",
+                "hc_hea_021",
+                "cv_acu_027",
+                "cv_acu_010",
+                "cv_con_049",
+                "cv_rec_002",
             ],
             "Species": ["human", "human", "human", "human", "human"],
             "Cell Type": ["CD8+T", "CD8+T", "CD8+T", "CD8+T", "CD8+T"],
             "Experiment": ["001", "002", "003", "004", "004"],
             "Donor": ["021", "027", "010", "049", "002"],
-            "Disease": ["U07.1", "U07.1", "U07.1", "I51.9", "K83.9"],
-            "Perturbation": ["A01AC02", "A01AC03", "A01AC03", "A01AC54", "A01AC01"],
+            "Disease": [None, "U07.1", "U07.1", "U07.1", "U07.1"],
             "Custom 1": ["healthy", "acute", "acute", "convalescent", "recovered"],
-            "Custom 2": ["control", "covid-19", "covid-19", "control", "control"],
+            "Custom 2": ["control", "covid-19", "covid-19", "covid-19", "covid-19"],
             "Custom 3": [12.11, np.nan, 0.87, np.nan, 11.91],
         }
     )
