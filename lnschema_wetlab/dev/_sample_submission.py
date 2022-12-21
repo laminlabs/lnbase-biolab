@@ -38,6 +38,8 @@ def add_from_column(
     added_entries["mappings"][pd_series.name] = (table_name, table_column)
     added_entries["entries"][table_name] = []
     for value in entries:
+        if value is None:
+            continue
         try:
             entry_data = {table_column: value}
             db_entry = ln.add(table, **entry_data)
@@ -213,7 +215,7 @@ def _add_columns(df: pd.DataFrame, column_mapper: dict) -> Dict[str, Dict]:
             added_entries = _update_added_entries(added_entries, entries)
     except Exception as e:
         _delete_added_entries(added_entries)
-        raise Exception("Failed at add_columns: ", e)
+        raise e
     return added_entries
 
 
