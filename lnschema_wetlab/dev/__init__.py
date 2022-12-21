@@ -17,7 +17,7 @@ Auxiliary modules:
 
 Datasets:
 
-.. automsummary::
+.. autosummary::
    :toctree: .
 
    datasets
