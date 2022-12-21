@@ -15,7 +15,14 @@ Auxiliary modules:
 
    id
 
+Datasets:
+
+.. autosummary::
+   :toctree: .
+
+   datasets
+
 """
-from . import id
+from . import datasets, id
 from ._sample_submission import parse_and_insert_df
 from ._versions import migration_vvhc, version_vvhc
