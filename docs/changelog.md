@@ -3,8 +3,8 @@
 <!-- prettier-ignore -->
 Name | PR | Developer | Date | Version
 --- | --- | --- | --- | ---
-♻️ Upgrade `lnschema-core` legacy | [57](https://github.com/laminlabs/lnschema-wetlab/pull/57) | [falexwolf](https://github.com/falexwolf) | 2023-01-09 |
-📝 : Add testing edge cases and polish datasets | [56](https://github.com/laminlabs/lnschema-wetlab/pull/56) | [bpenteado](https://github.com/bpenteado) | 2022-12-21 |
+♻️ Upgrade `lnschema-core` legacy | [57](https://github.com/laminlabs/lnschema-wetlab/pull/57) | [falexwolf](https://github.com/falexwolf) | 2023-01-09 | 0.13.1
+📝 Test edge cases and polish datasets | [56](https://github.com/laminlabs/lnschema-wetlab/pull/56) | [bpenteado](https://github.com/bpenteado) | 2022-12-21 |
 🚚 Remove `external_id` | [55](https://github.com/laminlabs/lnschema-wetlab/pull/55) | [falexwolf](https://github.com/falexwolf) | 2022-12-15 | 0.13.0
 📝 Prettify and exemplify sample submission documentation | [54](https://github.com/laminlabs/lnschema-wetlab/pull/54) | [bpenteado](https://github.com/bpenteado) | 2022-12-13 | 0.12.2
 🎨 Use prefix instead of wetlab in the link tables | [52](https://github.com/laminlabs/lnschema-wetlab/pull/52) | [sunnyosun](https://github.com/sunnyosun) | 2022-12-13 |
