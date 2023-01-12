@@ -3,6 +3,7 @@
 <!-- prettier-ignore -->
 Name | PR | Developer | Date | Version
 --- | --- | --- | --- | ---
+👷 Extend CI to py3.8-3.10 | [58](https://github.com/laminlabs/lnschema-wetlab/pull/58) | [sunnyosun](https://github.com/sunnyosun) | 2023-01-12 |
 ♻️ Upgrade `lnschema-core` legacy | [57](https://github.com/laminlabs/lnschema-wetlab/pull/57) | [falexwolf](https://github.com/falexwolf) | 2023-01-09 | 0.13.1
 📝 Test edge cases and polish datasets | [56](https://github.com/laminlabs/lnschema-wetlab/pull/56) | [bpenteado](https://github.com/bpenteado) | 2022-12-21 |
 🚚 Remove `external_id` | [55](https://github.com/laminlabs/lnschema-wetlab/pull/55) | [falexwolf](https://github.com/falexwolf) | 2022-12-15 | 0.13.0
