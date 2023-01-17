@@ -16,9 +16,9 @@ classifiers = [
 dependencies = [
     "nbproject",
     "sqlmodel",
-    "lnschema_core>=0.22.0",
+    "lnschema_core>=0.24.1",
     "lnschema_bionty",
-    "lndb_setup>=0.22.0",
+    "lndb_setup>=0.30.6",
 ]
 
 [project.urls]
@@ -33,8 +33,7 @@ test = [
     "pytest>=6.0",
     "pytest-cov",
     "cloudpathlib",
-    "lamindb>=0.22.4",
-    "lndb_setup"
+    "lamindb>=0.24.4",
 ]
 
 [tool.black]
