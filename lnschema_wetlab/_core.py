@@ -2,12 +2,10 @@ from datetime import datetime as datetime
 from typing import Optional
 
 from lndb_setup import settings
-from lnschema_bionty import Species
 from lnschema_core import DObject, Project  # noqa
 from lnschema_core._timestamps import CreatedAt, UpdatedAt
 from lnschema_core._users import CreatedBy
 from lnschema_core.dev.sqlmodel import schema_sqlmodel
-from sqlalchemy.orm import declared_attr, relationship
 from sqlmodel import Field
 
 from . import _name as schema_name
@@ -47,17 +45,14 @@ class BiosampleBase(SQLModel):  # type: ignore
 
     id: str = Field(default_factory=idg.biosample, primary_key=True)
     name: Optional[str] = Field(default=None, index=True)
-    species_id: Optional[str] = Field(
-        default=None, foreign_key="bionty.species.id", index=True
-    )
     created_by: str = CreatedBy
     created_at: datetime = CreatedAt
     updated_at: Optional[datetime] = UpdatedAt
 
-    # relationships
-    @declared_attr
-    def species(self) -> Optional[Species]:
-        return relationship("Species")
+    # # relationships
+    # @declared_attr
+    # def species(self) -> Optional[Species]:
+    #     return relationship("Species")
 
 
 class TechsampleBase(SQLModel):  # type: ignore

@@ -1,6 +1,6 @@
 from typing import Optional
 
-from lnschema_bionty import CellType, Disease, Tissue
+from lnschema_bionty import CellType, Disease, Species, Tissue
 from lnschema_core import DObject
 from lnschema_core.dev.sqlmodel import add_relationship_keys, schema_sqlmodel
 from sqlalchemy.orm import relationship
@@ -52,6 +52,10 @@ class Biosample(BiosampleBase, table=True):  # type: ignore
     """Biological samples that are registered in experiments."""
 
     batch: Optional[str] = None
+    species_id: Optional[str] = Field(
+        default=None, foreign_key="bionty.species.id", index=True
+    )
+    species: Species = Relationship()
     tissue_id: Optional[str] = Field(
         default=None, foreign_key="bionty.tissue.id", index=True
     )
