@@ -3,6 +3,7 @@
 <!-- prettier-ignore -->
 Name | PR | Developer | Date | Version
 --- | --- | --- | --- | ---
+🔥 Move the tests of sample submission to lndb-rest | [60](https://github.com/laminlabs/lnschema-wetlab/pull/60) | [sunnyosun](https://github.com/sunnyosun) | 2023-01-17 |
 🚚 Removed species from BiosampleBase | [59](https://github.com/laminlabs/lnschema-wetlab/pull/59) | [sunnyosun](https://github.com/sunnyosun) | 2023-01-17 | 0.13.2
 👷 Extend CI to py3.8-3.10 | [58](https://github.com/laminlabs/lnschema-wetlab/pull/58) | [sunnyosun](https://github.com/sunnyosun) | 2023-01-12 |
 ♻️ Upgrade `lnschema-core` legacy | [57](https://github.com/laminlabs/lnschema-wetlab/pull/57) | [falexwolf](https://github.com/falexwolf) | 2023-01-09 | 0.13.1
