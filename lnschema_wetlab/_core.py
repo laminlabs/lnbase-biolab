@@ -1,7 +1,7 @@
 from datetime import datetime as datetime
 from typing import Optional
 
-from lndb_setup import settings
+from lndb import settings
 from lnschema_core import DObject, Project  # noqa
 from lnschema_core._timestamps import CreatedAt, UpdatedAt
 from lnschema_core._users import CreatedBy
