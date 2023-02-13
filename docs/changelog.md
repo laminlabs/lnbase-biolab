@@ -3,7 +3,7 @@
 <!-- prettier-ignore -->
 Name | PR | Developer | Date | Version
 --- | --- | --- | --- | ---
-⬆️ Upgrade and rename `lndb_setup` to `lndb` (v0.32.0) | [61](https://github.com/laminlabs/lnschema-wetlab/pull/61) | [bpenteado](https://github.com/bpenteado) | 2023-02-13 |
+⬆️ Upgrade and rename `lndb_setup` to `lndb` (v0.32.0) | [61](https://github.com/laminlabs/lnschema-wetlab/pull/61) | [bpenteado](https://github.com/bpenteado) | 2023-02-13 | 0.13.4
 🔥 Move the tests of sample submission to lndb-rest | [60](https://github.com/laminlabs/lnschema-wetlab/pull/60) | [sunnyosun](https://github.com/sunnyosun) | 2023-01-17 | 0.13.3
 🚚 Removed species from BiosampleBase | [59](https://github.com/laminlabs/lnschema-wetlab/pull/59) | [sunnyosun](https://github.com/sunnyosun) | 2023-01-17 | 0.13.2
 👷 Extend CI to py3.8-3.10 | [58](https://github.com/laminlabs/lnschema-wetlab/pull/58) | [sunnyosun](https://github.com/sunnyosun) | 2023-01-12 |
