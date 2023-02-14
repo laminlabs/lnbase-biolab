@@ -16,9 +16,9 @@ classifiers = [
 dependencies = [
     "nbproject",
     "sqlmodel",
-    "lnschema_core>=0.24.1",
+    "lnschema_core>=0.26.1",
     "lnschema_bionty",
-    "lndb>=0.32.0",
+    "lndb>=0.32.4",
 ]
 
 [project.urls]
