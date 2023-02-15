@@ -15,9 +15,7 @@ if "wetlab" in settings.instance.schema:
         __tablename__ = f"{prefix}project_experiment"
 
         project_id: str = Field(foreign_key="core.project.id", primary_key=True)
-        experiment_id: str = Field(
-            foreign_key=f"{prefix}experiment.id", primary_key=True
-        )
+        experiment_id: str = Field(foreign_key="wetlab.experiment.id", primary_key=True)
 
     class DObjectExperiment(SQLModel, table=True):  # type: ignore
         """Links for `DObject` and `Experiment`."""
