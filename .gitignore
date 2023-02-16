@@ -1,3 +1,10 @@
+# internal
+lamin-site-assets_test/
+tests/lamin-site-assets_test/
+testdb/
+lnschema_core/alembic.ini
+lnschema_core/migrations/env.py
+lnschema_core/migrations/script.py.mako
 docs/guide/testsample/
 
 # macOS
