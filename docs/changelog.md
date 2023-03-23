@@ -3,6 +3,7 @@
 <!-- prettier-ignore -->
 Name | PR | Developer | Date | Version
 --- | --- | --- | --- | ---
+✨ Auto population of readout | [64](https://github.com/laminlabs/lnschema-wetlab/pull/64) | [sunnyosun](https://github.com/sunnyosun) | 2023-03-23 |
 🔥 Remove migration files | [63](https://github.com/laminlabs/lnschema-wetlab/pull/63) | [sunnyosun](https://github.com/sunnyosun) | 2023-02-15 |
 ⬆️ Upgrade and rename `lndb_setup` to `lndb` (v0.32.0) | [61](https://github.com/laminlabs/lnschema-wetlab/pull/61) | [bpenteado](https://github.com/bpenteado) | 2023-02-13 | 0.13.4
 🔥 Move the tests of sample submission to lndb-rest | [60](https://github.com/laminlabs/lnschema-wetlab/pull/60) | [sunnyosun](https://github.com/sunnyosun) | 2023-01-17 | 0.13.3
