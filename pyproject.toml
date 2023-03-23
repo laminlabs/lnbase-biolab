@@ -17,7 +17,7 @@ dependencies = [
     "nbproject",
     "sqlmodel",
     "lnschema_core>=0.24.1",
-    "lnschema_bionty",
+    "lnschema_bionty>=0.10.1",
     "lndb>=0.32.0",
 ]
 
