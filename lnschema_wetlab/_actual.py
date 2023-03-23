@@ -1,6 +1,8 @@
 from typing import Optional
 
+import bionty as bt
 from lnschema_bionty import CellType, Disease, Species, Tissue
+from lnschema_bionty.dev._bionty import knowledge
 from lnschema_core import DObject
 from lnschema_core.dev.sqlmodel import add_relationship_keys, schema_sqlmodel
 from sqlalchemy.orm import relationship
@@ -95,6 +97,7 @@ Biosample.techsamples = relationship(
 Biosample.__sqlmodel_relationships__["techsamples"] = None
 
 
+@knowledge(bt.Readout)
 class Readout(ReadoutBase, table=True):  # type: ignore
     """Biological samples that are registered in experiments."""
 
