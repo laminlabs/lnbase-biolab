@@ -3,7 +3,7 @@ from typing import Optional
 import bionty as bt
 from lnschema_bionty import CellType, Disease, Species, Tissue
 from lnschema_bionty.dev._bionty import knowledge
-from lnschema_core import DObject
+from lnschema_core import File
 from lnschema_core.dev.sqlmodel import add_relationship_keys, schema_sqlmodel
 from sqlalchemy.orm import relationship
 from sqlmodel import Field, Relationship
@@ -16,12 +16,7 @@ from ._core import (
     ReadoutBase,
     TechsampleBase,
 )
-from ._link import (
-    BiosampleTechsample,
-    DObjectBiosample,
-    DObjectExperiment,
-    DObjectReadout,
-)
+from ._link import BiosampleTechsample, FileBiosample, FileExperiment, FileReadout
 
 _, prefix, schema_arg = schema_sqlmodel(schema_name)
 
@@ -32,16 +27,16 @@ class Experiment(ExperimentBase, table=True):  # type: ignore
     experiment_type_id: str = Field(
         default=None, foreign_key="wetlab.experiment_type.id", index=True
     )
-    dobjects: DObject = Relationship(
+    files: File = Relationship(
         back_populates="experiments",
-        sa_relationship_kwargs=dict(secondary=DObjectExperiment.__table__),
+        sa_relationship_kwargs=dict(secondary=FileExperiment.__table__),
     )
 
 
-DObject.experiments = relationship(
-    Experiment, back_populates="dobjects", secondary=DObjectExperiment.__table__
+File.experiments = relationship(
+    Experiment, back_populates="files", secondary=FileExperiment.__table__
 )
-DObject.__sqlmodel_relationships__["experiments"] = None
+File.__sqlmodel_relationships__["experiments"] = None
 
 
 class ExperimentType(ExperimentTypeBase, table=True):  # type: ignore
@@ -70,16 +65,16 @@ class Biosample(BiosampleBase, table=True):  # type: ignore
         default=None, foreign_key="bionty.disease.id", index=True
     )
     disease: Disease = Relationship()
-    dobjects: DObject = Relationship(
+    files: File = Relationship(
         back_populates="biosamples",
-        sa_relationship_kwargs=dict(secondary=DObjectBiosample.__table__),
+        sa_relationship_kwargs=dict(secondary=FileBiosample.__table__),
     )
 
 
-DObject.biosamples = relationship(
-    Biosample, back_populates="dobjects", secondary=DObjectBiosample.__table__
+File.biosamples = relationship(
+    Biosample, back_populates="files", secondary=FileBiosample.__table__
 )
-DObject.__sqlmodel_relationships__["biosamples"] = None
+File.__sqlmodel_relationships__["biosamples"] = None
 
 add_relationship_keys(Biosample)
 
@@ -101,15 +96,15 @@ Biosample.__sqlmodel_relationships__["techsamples"] = None
 class Readout(ReadoutBase, table=True):  # type: ignore
     """Biological samples that are registered in experiments."""
 
-    dobjects: DObject = Relationship(
+    files: File = Relationship(
         back_populates="readouts",
-        sa_relationship_kwargs=dict(secondary=DObjectReadout.__table__),
+        sa_relationship_kwargs=dict(secondary=FileReadout.__table__),
     )
 
 
-DObject.readouts = relationship(
+File.readouts = relationship(
     Readout,
-    back_populates="dobjects",
-    secondary=DObjectReadout.__table__,
+    back_populates="files",
+    secondary=FileReadout.__table__,
 )
-DObject.__sqlmodel_relationships__["readouts"] = None
+File.__sqlmodel_relationships__["readouts"] = None
