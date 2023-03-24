@@ -3,7 +3,7 @@
 <!-- prettier-ignore -->
 Name | PR | Developer | Date | Version
 --- | --- | --- | --- | ---
-🚚 Rename `DObject` to `File` | [65](https://github.com/laminlabs/lnschema-wetlab/pull/65) | [falexwolf](https://github.com/falexwolf) | 2023-03-24 |
+🚚 Rename `DObject` to `File` | [65](https://github.com/laminlabs/lnschema-wetlab/pull/65) | [falexwolf](https://github.com/falexwolf) | 2023-03-24 | 0.15rc1
 ✨ Auto population of readout | [64](https://github.com/laminlabs/lnschema-wetlab/pull/64) | [sunnyosun](https://github.com/sunnyosun) | 2023-03-23 | 0.14.0
 🔥 Remove migration files | [63](https://github.com/laminlabs/lnschema-wetlab/pull/63) | [sunnyosun](https://github.com/sunnyosun) | 2023-02-15 |
 ⬆️ Upgrade and rename `lndb_setup` to `lndb` (v0.32.0) | [61](https://github.com/laminlabs/lnschema-wetlab/pull/61) | [bpenteado](https://github.com/bpenteado) | 2023-02-13 | 0.13.4
