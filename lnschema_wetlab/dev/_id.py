@@ -6,7 +6,7 @@ def biometa() -> str:
 
     Biometa consists of tuples of biosample, experiment, readout, featureset.
 
-    There are about as many biometa rows as dobjects.
+    There are about as many biometa rows as files.
 
     21 characters (62**21=4e+37 possibilities) outperform UUID (2*122=5e+36).
     """

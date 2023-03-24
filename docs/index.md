@@ -5,7 +5,7 @@
 
 `lnschema-wetlab` is an extendable schema to track data generation in wet labs.
 
-Data objects (`DObject`) get directly linked to
+Data objects (`File`) get directly linked to
 
 - `Experiment`: An experiment performed to generate data.
 - `Biosample`: The biological samples from which data are generated.

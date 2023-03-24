@@ -5,15 +5,15 @@
 
    BiosampleTechsample
    ProjectExperiment
-   DObjectBiosample
-   DObjectExperiment
-   DObjectReadout
+   FileBiosample
+   FileExperiment
+   FileReadout
 
 """
 from ._link import (  # noqa
     BiosampleTechsample,
-    DObjectBiosample,
-    DObjectExperiment,
-    DObjectReadout,
+    FileBiosample,
+    FileExperiment,
+    FileReadout,
     ProjectExperiment,
 )
