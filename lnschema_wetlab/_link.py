@@ -25,14 +25,6 @@ if "wetlab" in settings.instance.schema:
         file_id: str = Field(foreign_key="core.file.id", primary_key=True)
         experiment_id: str = Field(foreign_key="wetlab.experiment.id", primary_key=True)
 
-    class FileReadout(SQLModel, table=True):  # type: ignore
-        """Links for `File` and `Readout`."""
-
-        __tablename__ = f"{prefix}file_readout"
-
-        file_id: str = Field(foreign_key="core.file.id", primary_key=True)
-        readout_id: str = Field(foreign_key="wetlab.readout.id", primary_key=True)
-
     class BiosampleTechsample(SQLModel, table=True):  # type: ignore
         """Links for `Biosample` and `Techsample`."""
 
@@ -54,4 +46,3 @@ else:
     FileExperiment = None  # type: ignore
     BiosampleTechsample = None  # type: ignore
     FileBiosample = None  # type: ignore
-    FileReadout = None  # type: ignore

@@ -1,22 +1,14 @@
 from typing import Optional
 
-import bionty as bt
 from lnschema_bionty import CellType, Disease, Species, Tissue
-from lnschema_bionty.dev._bionty import knowledge
 from lnschema_core import File
 from lnschema_core.dev.sqlmodel import add_relationship_keys, schema_sqlmodel
 from sqlalchemy.orm import relationship
 from sqlmodel import Field, Relationship
 
 from . import _name as schema_name
-from ._core import (
-    BiosampleBase,
-    ExperimentBase,
-    ExperimentTypeBase,
-    ReadoutBase,
-    TechsampleBase,
-)
-from ._link import BiosampleTechsample, FileBiosample, FileExperiment, FileReadout
+from ._core import BiosampleBase, ExperimentBase, ExperimentTypeBase, TechsampleBase
+from ._link import BiosampleTechsample, FileBiosample, FileExperiment
 
 _, prefix, schema_arg = schema_sqlmodel(schema_name)
 
@@ -90,21 +82,3 @@ Biosample.techsamples = relationship(
     Techsample, back_populates="biosamples", secondary=BiosampleTechsample.__table__
 )
 Biosample.__sqlmodel_relationships__["techsamples"] = None
-
-
-@knowledge(bt.Readout)
-class Readout(ReadoutBase, table=True):  # type: ignore
-    """Biological samples that are registered in experiments."""
-
-    files: File = Relationship(
-        back_populates="readouts",
-        sa_relationship_kwargs=dict(secondary=FileReadout.__table__),
-    )
-
-
-File.readouts = relationship(
-    Readout,
-    back_populates="files",
-    secondary=FileReadout.__table__,
-)
-File.__sqlmodel_relationships__["readouts"] = None
