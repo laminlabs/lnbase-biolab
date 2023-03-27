@@ -68,27 +68,12 @@ class TechsampleBase(SQLModel):  # type: ignore
     updated_at: Optional[datetime] = UpdatedAt
 
 
-class ReadoutBase(SQLModel):  # type: ignore
-    """Readouts."""
-
-    id: str = Field(default_factory=idg.readout, primary_key=True)
-    efo_id: Optional[str] = Field(default=None, unique=True, index=True)
-    name: Optional[str] = None
-    molecule: Optional[str] = None
-    instrument: Optional[str] = None
-    measurement: Optional[str] = None
-    created_by: str = CreatedBy
-    created_at: datetime = CreatedAt
-    updated_at: Optional[datetime] = UpdatedAt
-
-
 # the following is just for testing purposes
 if "wetlab" in settings.instance.schema:
-    from ._actual import Biosample, Experiment, ExperimentType, Readout, Techsample
+    from ._actual import Biosample, Experiment, ExperimentType, Techsample
 
 else:
     Experiment = None  # type: ignore
     ExperimentType = None  # type: ignore
     Biosample = None  # type: ignore
     Techsample = None  # type: ignore
-    Readout = None  # type: ignore

@@ -13,7 +13,6 @@ Base classes:
    ExperimentTypeBase
    BiosampleBase
    TechsampleBase
-   ReadoutBase
 
 Examples of derived classes, typically configured:
 
@@ -24,7 +23,6 @@ Examples of derived classes, typically configured:
    ExperimentTypeBase
    BiosampleBase
    TechsampleBase
-   ReadoutBase
 
 Development tools:
 
@@ -49,8 +47,6 @@ from ._core import (  # noqa
     ExperimentBase,
     ExperimentType,
     ExperimentTypeBase,
-    Readout,
-    ReadoutBase,
     Techsample,
     TechsampleBase,
 )
