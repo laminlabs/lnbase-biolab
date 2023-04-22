@@ -2,9 +2,9 @@
 lamin-site-assets_test/
 tests/lamin-site-assets_test/
 testdb/
-lnschema_wetlab/alembic.ini
-lnschema_wetlab/migrations/env.py
-lnschema_wetlab/migrations/script.py.mako
+lnbase_biolab/alembic.ini
+lnbase_biolab/migrations/env.py
+lnbase_biolab/migrations/script.py.mako
 docs/guide/testsample/
 
 # macOS
@@ -111,7 +111,7 @@ ENV/
 
 # Lamin
 _build
-docs/lnschema_wetlab.*
+docs/lnbase_biolab.*
 lamin_sphinx
 docs/conf.py
 _docs_tmp*

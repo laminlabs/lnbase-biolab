@@ -3,7 +3,7 @@ requires = ["flit_core >=3.2,<4"]
 build-backend = "flit_core.buildapi"
 
 [project]
-name = "lnschema_wetlab"
+name = "lnbase_biolab"
 authors = [{name = "Lamin Labs", email = "laminlabs@gmail.com"}]
 readme = "README.md"
 dynamic = ["version", "description"]
@@ -22,7 +22,7 @@ dependencies = [
 ]
 
 [project.urls]
-Home = "https://github.com/laminlabs/lnschema-wetlab"
+Home = "https://github.com/laminlabs/lnbase-biolab"
 
 [project.optional-dependencies]
 dev = [
@@ -45,5 +45,5 @@ testpaths = [
 
 [tool.coverage.run]
 omit = [
-    "lnschema_wetlab/*",
+    "lnbase_biolab/*",
 ]

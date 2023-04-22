@@ -1,5 +1,5 @@
-project_name: lnschema-wetlab
-description: Generic wetlab
-project_slug: lnschema-wetlab
-repository_name: lnschema-wetlab
-package_name: lnschema_wetlab
+project_name: lnbase-biolab
+description: Base classes for for a biology lab
+project_slug: lnbase-biolab
+repository_name: lnbase-biolab
+package_name: lnbase_biolab

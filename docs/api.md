@@ -1,5 +1,5 @@
 # API
 
 ```{eval-rst}
-.. automodule:: lnschema_wetlab
+.. automodule:: lnbase_biolab
 ```

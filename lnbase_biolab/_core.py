@@ -1,8 +1,6 @@
 from datetime import datetime as datetime
 from typing import Optional
 
-from lndb import settings
-from lnschema_core import File, Project  # noqa
 from lnschema_core._timestamps import CreatedAt, UpdatedAt
 from lnschema_core._users import CreatedBy
 from lnschema_core.dev.sqlmodel import schema_sqlmodel
@@ -49,11 +47,6 @@ class BiosampleBase(SQLModel):  # type: ignore
     created_at: datetime = CreatedAt
     updated_at: Optional[datetime] = UpdatedAt
 
-    # # relationships
-    # @declared_attr
-    # def species(self) -> Optional[Species]:
-    #     return relationship("Species")
-
 
 class TechsampleBase(SQLModel):  # type: ignore
     """Tech samples that are generated due to instrument units."""
@@ -66,14 +59,3 @@ class TechsampleBase(SQLModel):  # type: ignore
     created_by: str = CreatedBy
     created_at: datetime = CreatedAt
     updated_at: Optional[datetime] = UpdatedAt
-
-
-# the following is just for testing purposes
-if "wetlab" in settings.instance.schema:
-    from ._actual import Biosample, Experiment, ExperimentType, Techsample
-
-else:
-    Experiment = None  # type: ignore
-    ExperimentType = None  # type: ignore
-    Biosample = None  # type: ignore
-    Techsample = None  # type: ignore

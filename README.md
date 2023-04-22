@@ -1,5 +1,5 @@
-[![pypi](https://img.shields.io/pypi/v/lnschema_wetlab?color=%2334D058&label=pypi%20package)](https://pypi.org/project/lnschema_wetlab)
+[![pypi](https://img.shields.io/pypi/v/lnbase_biolab?color=%2334D058&label=pypi%20package)](https://pypi.org/project/lnbase_biolab)
 
-# lnschema-wetlab: Generic bio wetlab (`vvhc`)
+# lnbase-biolab: Generic bio wetlab (`vvhc`)
 
-Read the [docs](https://lamin.ai/docs/lnschema-wetlab).
+Read the [docs](https://lamin.ai/docs/lnbase-biolab).
