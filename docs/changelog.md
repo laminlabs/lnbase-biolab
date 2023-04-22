@@ -3,7 +3,7 @@
 <!-- prettier-ignore -->
 Name | PR | Developer | Date | Version
 --- | --- | --- | --- | ---
-🏗️ Turn into base model module `lnschema-wetlab` → `lnbase-biolab` | [67](https://github.com/laminlabs/lnbase-biolab/pull/67) | [falexwolf](https://github.com/falexwolf) | 2023-04-22 |
+🏗️ Turn into base model module `lnschema-wetlab` → `lnbase-biolab` | [67](https://github.com/laminlabs/lnbase-biolab/pull/67) | [falexwolf](https://github.com/falexwolf) | 2023-04-22 | 0.15.0
 🚚 Move Readout to lnschema-bionty | [66](https://github.com/laminlabs/lnbase-biolab/pull/66) | [sunnyosun](https://github.com/sunnyosun) | 2023-03-27 | 0.15rc2
 🚚 Rename `DObject` to `File` | [65](https://github.com/laminlabs/lnbase-biolab/pull/65) | [falexwolf](https://github.com/falexwolf) | 2023-03-24 | 0.15rc1
 ✨ Auto population of readout | [64](https://github.com/laminlabs/lnbase-biolab/pull/64) | [sunnyosun](https://github.com/sunnyosun) | 2023-03-23 | 0.14.0
