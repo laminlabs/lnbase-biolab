@@ -3,7 +3,7 @@
 :end-line: 3
 ```
 
-`lnschema-wetlab` is an extendable schema to track data generation in wet labs.
+`lnbase-biolab` is an extendable schema to track data generation in wet labs.
 
 Data objects (`File`) get directly linked to
 
@@ -22,7 +22,7 @@ The order of this tuple is inspired by the workflow:
 Install:
 
 ```
-pip install lnschema-wetlab
+pip install lnbase-biolab
 ```
 
 Get started:
