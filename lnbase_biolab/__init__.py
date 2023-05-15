@@ -26,7 +26,7 @@ Development tools:
 """
 _codeproject_id = "vvhc"
 _name = "biolab"
-__version__ = "0.15.1"
+__version__ = "0.15.2"
 
 from . import dev
 from ._core import (  # noqa
