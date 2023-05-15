@@ -59,3 +59,11 @@ class TechsampleBase(SQLModel):  # type: ignore
     created_by: str = CreatedBy
     created_at: datetime = CreatedAt
     updated_at: Optional[datetime] = UpdatedAt
+
+
+class TreatmentBase(SQLModel):  # type: ignore
+    """Treatments."""
+
+    id: str = Field(default_factory=idg.treatment, primary_key=True)
+    name: Optional[str] = Field(default=None, index=True)
+    description: Optional[str] = Field(default=None, index=True)

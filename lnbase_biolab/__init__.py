@@ -13,6 +13,7 @@ Base classes:
    ExperimentTypeBase
    BiosampleBase
    TechsampleBase
+   TreatmentBase
 
 Development tools:
 
@@ -33,4 +34,5 @@ from ._core import (  # noqa
     ExperimentBase,
     ExperimentTypeBase,
     TechsampleBase,
+    TreatmentBase,
 )
