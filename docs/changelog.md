@@ -3,7 +3,7 @@
 <!-- prettier-ignore -->
 Name | PR | Developer | Date | Version
 --- | --- | --- | --- | ---
-✨ Added `TreatmentBase` | [68](https://github.com/laminlabs/lnbase-biolab/pull/68) | [sunnyosun](https://github.com/sunnyosun) | 2023-05-15 |
+✨ Added `TreatmentBase` | [68](https://github.com/laminlabs/lnbase-biolab/pull/68) | [sunnyosun](https://github.com/sunnyosun) | 2023-05-15 | 0.15.1
 🏗️ Turn into base model module `lnschema-wetlab` → `lnbase-biolab` | [67](https://github.com/laminlabs/lnbase-biolab/pull/67) | [falexwolf](https://github.com/falexwolf) | 2023-04-22 | 0.15.0
 🚚 Move Readout to lnschema-bionty | [66](https://github.com/laminlabs/lnbase-biolab/pull/66) | [sunnyosun](https://github.com/sunnyosun) | 2023-03-27 | 0.15rc2
 🚚 Rename `DObject` to `File` | [65](https://github.com/laminlabs/lnbase-biolab/pull/65) | [falexwolf](https://github.com/falexwolf) | 2023-03-24 | 0.15rc1
