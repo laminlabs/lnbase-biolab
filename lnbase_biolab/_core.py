@@ -67,3 +67,6 @@ class TreatmentBase(SQLModel):  # type: ignore
     id: str = Field(default_factory=idg.treatment, primary_key=True)
     name: Optional[str] = Field(default=None, index=True)
     description: Optional[str] = Field(default=None, index=True)
+    created_by: str = CreatedBy
+    created_at: datetime = CreatedAt
+    updated_at: Optional[datetime] = UpdatedAt
